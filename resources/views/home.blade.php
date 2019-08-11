@@ -2,19 +2,44 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
+    <div class="text-center">
+        <img src="" alt="">
+        <!--profile image-->
+        <div class="">
+            name
+        </div>
+        <div class="">
+            bio
+        </div>
+        <div class="">
+            # posts # claps # photoviews
+        </div>
+        <div class="">
+            <a href="#">personal website</a>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <h5>Availabilities</h5>
+            </div>
+            <div class="col-4">
+                <h5>Cameras</h5>
+            </div>
+            <div class="col-4">
+                <h5>Specialties</h5>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    <img src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png?v=1530129081" class="w-100" alt="">
+                </div>
+                <div class="col-4">
+                    <img src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png?v=1530129081" class="w-100" alt="">
+                </div>
+                <div class="col-4">
+                    <img src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png?v=1530129081" class="w-100" alt="">
                 </div>
             </div>
         </div>
