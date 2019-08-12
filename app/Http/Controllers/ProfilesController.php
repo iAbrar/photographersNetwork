@@ -9,7 +9,6 @@ class ProfilesController extends Controller
 {
   public function index($username)
   {
-    //dd($user);
       $user = User::where('username', $username)->first();
 
       return view('profile', [

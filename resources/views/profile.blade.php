@@ -9,17 +9,18 @@
             {{ $user->name }}
         </div>
         <div class="">
-            bio
+            {{ $user->profile->bio }}
         </div>
         <div class="">
             # posts # claps # photoviews
         </div>
         <div class="">
-            <a href="#">url</a>
+            <a href="">  {{ $user->profile->url}}</a>
         </div>
         <div class="row">
             <div class="col-4">
                 <h5>Availabilities</h5>
+                  {{ $user->profile->avaliableToHire }}
             </div>
             <div class="col-4">
                 <h5>Cameras</h5>
