@@ -15,5 +15,9 @@ class Profile extends Model
     {
       return $this->hasMany(Camera::class);
     }
-
+    
+    public function specialties()
+    {
+      return $this->hasMany(Specialty::class);
+    }
 }
