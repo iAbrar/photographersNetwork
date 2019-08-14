@@ -15,12 +15,12 @@
             {{ $user->posts->count() }} posts # claps # photoviews
         </div>
         <div class="">
-            <a href="">  {{ $user->profile->url}}</a>
+            <a href=""> {{ $user->profile->url}}</a>
         </div>
         <div class="row">
             <div class="col-4">
                 <h5>Availabilities</h5>
-                  {{ $user->profile->avaliableToHire }}
+                {{ $user->profile->avaliableToHire }}
             </div>
             <div class="col-4">
                 <h5>Cameras</h5>
@@ -33,12 +33,12 @@
 
     <div class="row">
 
-                @foreach ($user->posts as $post)
-<div class="col-4">
-                      <img src="/storage/{{ $post-> image}}" class="w-100" alt="">
-</div>
-                @endforeach
+        @foreach ($user->posts as $post)
+        <div class="col-4">
+            <a href="/post/{{ $post->id }}"><img src="/storage/{{ $post-> image}}" class="w-100" alt=""></a>
+        </div>
+        @endforeach
 
-          </div>
+    </div>
 </div>
 @endsection
