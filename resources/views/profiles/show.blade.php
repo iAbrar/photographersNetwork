@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="text-center">
-        <img src="" alt="">
+        <img src="/storage/{{ $user->profile->avatar}}" class="rounded-circle" width="100px;" alt="">
         <!--profile image-->
         <div class="">
             {{ $user->name }}
@@ -15,7 +15,7 @@
             {{ $user->posts->count() }} posts # claps # photoviews
         </div>
         <div class="">
-            <a href=""> {{ $user->profile->url}}</a>
+            <a href="{{ $user->profile->url}}"> {{ $user->profile->url}}</a>
         </div>
         <div class="row">
             <div class="col-4">
@@ -34,7 +34,7 @@
     <div class="row">
 
         @foreach ($user->posts as $post)
-        <div class="col-4">
+        <div class="col-4 pt-4">
             <a href="/post/{{ $post->id }}"><img src="/storage/{{ $post-> image}}" class="w-100" alt=""></a>
         </div>
         @endforeach
