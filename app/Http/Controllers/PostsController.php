@@ -30,7 +30,7 @@ class PostsController extends Controller
       $imagePath = request('image')->store('uploads','public');
 
       // resize the image to be a square
-      $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200,1200); // what is the difference between ' and " in this case?
+      $image = Image::make(public_path("storage/{$imagePath}"))->fit(900,900); // what is the difference between ' and " in this case?
       $image->save();
 
 
@@ -42,5 +42,10 @@ class PostsController extends Controller
       return redirect()->action(
           'ProfilesController@index', ['username' => auth()->user()->username]
       );
+    }
+
+    public function show(\App\Post $post)
+    {
+      return view('posts.show',compact('post'));
     }
 }
