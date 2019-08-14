@@ -12,7 +12,7 @@
             {{ $user->profile->bio }}
         </div>
         <div class="">
-            # posts # claps # photoviews
+            {{ $user->posts->count() }} posts # claps # photoviews
         </div>
         <div class="">
             <a href="">  {{ $user->profile->url}}</a>
@@ -30,20 +30,15 @@
             </div>
         </div>
     </div>
+
     <div class="row">
-        <div class="container">
-            <div class="row">
-                <div class="col-4">
-                    <img src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png?v=1530129081" class="w-100" alt="">
-                </div>
-                <div class="col-4">
-                    <img src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png?v=1530129081" class="w-100" alt="">
-                </div>
-                <div class="col-4">
-                    <img src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png?v=1530129081" class="w-100" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
+
+                @foreach ($user->posts as $post)
+<div class="col-4">
+                      <img src="/storage/{{ $post-> image}}" class="w-100" alt="">
+</div>
+                @endforeach
+
+          </div>
 </div>
 @endsection

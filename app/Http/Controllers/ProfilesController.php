@@ -11,7 +11,7 @@ class ProfilesController extends Controller
   {
       $user = User::where('username', $username)->firstOrFail();
 
-      return view('profile', [
+      return view('profiles.profile', [
         'user' => $user,
       ]);
   }
