@@ -13,9 +13,7 @@
                 <div> # claps</div>
 
                     by <strong class="pl-2"><a href="/{{ $post->user->username }}">{{ $post->user->username }}</a></strong>
-                    <img src="" alt=""> avatar
-
-
+                    <img src="/storage/{{ $post->user->profile->avatar}}" class="rounded-circle" width="50px;" alt="">
 
                           </div>
                           <div class="row">
