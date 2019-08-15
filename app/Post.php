@@ -18,4 +18,11 @@ class Post extends Model
   {
     return $this->hasMany(Comment::class);
   }
+
+  public function addComment($body)
+  {
+//dd($body);
+    $this->comments()->create(compact('body'));
+  }
+
 }
