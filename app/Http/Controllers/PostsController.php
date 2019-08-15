@@ -11,7 +11,7 @@ class PostsController extends Controller
 
     public function __construct()
     {
-      $this->middleware('auth');
+      //$this->middleware('auth');
     }
 
     public function create()
@@ -32,7 +32,6 @@ class PostsController extends Controller
       // resize the image to be a square
       $image = Image::make(public_path("storage/{$imagePath}"))->fit(900,900); // what is the difference between ' and " in this case?
       $image->save();
-
 
       auth()->user()->posts()->create([
         'caption' => $data['caption'],
