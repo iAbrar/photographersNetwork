@@ -14,6 +14,12 @@ class PostsController extends Controller
     {
       //$this->middleware('auth');
     }
+    public function timeLine()
+    {
+      $posts = Post::latest()->get();
+
+      return view('posts.index',compact('posts'));
+    }
 
     public function create()
     {
