@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
+use App\Post;
 
 class PostsController extends Controller
 {
@@ -43,8 +44,31 @@ class PostsController extends Controller
       );
     }
 
-    public function show(\App\Post $post)
+    public function show(Post $post)
     {
       return view('posts.show',compact('post'));
+    }
+
+    public function edit(Post $post)
+    {
+
+      //$this->authorize('update',$post);
+
+      return view('posts.edit',compact('post'));
+    }
+
+    public function update(Post $post)
+    {
+
+      $data = request()->validate([
+        'caption' => 'required',
+      ]);
+      //dd($data['caption']);
+      //  $post->caption->update($data); why it doesnt work ?
+      //$post->caption-=$data['caption'];
+      $post->caption=$data['caption'];
+      $post->save();
+      return redirect("/posts/{$post->id}");
+
     }
 }

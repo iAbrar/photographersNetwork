@@ -30,8 +30,25 @@
                 by <strong class="pl-2"><a href="/{{ $post->user->username }}">{{ $post->user->username }}</a></strong>
 
             </div>
-            <div class="row pt-2">
-                {{ $post->caption }}
+            <div class="row pt-2 align-items-baseline">
+                <div>
+                    {{ $post->caption }}
+                </div>
+
+                <div class="dropdown">
+                    <button class="btn btn-primary-outline" type="button" id="more" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="more">
+                        <a class="dropdown-item" href="/posts/{{ $post->id }}/edit">Edit</a>
+                        <form>
+                            <button class="dropdown-item" type="submit">Delete</button>
+                        </form>
+                        <a class="dropdown-item" href="#">Cancel</a>
+                    </div>
+                </div>
+
+
             </div>
 
             <div class="row pt-2">
@@ -45,7 +62,7 @@
                 <hr />
                 @endforeach
             </div>
-            <form action="/post/{{$post->id}}/comment" method="post">
+            <form action="/posts/{{$post->id}}/comment" method="post">
                 @csrf
 
                 <fieldset class="form-group">
