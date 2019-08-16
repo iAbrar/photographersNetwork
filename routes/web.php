@@ -22,6 +22,7 @@ Route::get('/posts', 'PostsController@timeLine');
 Route::get('/posts/{post}', 'PostsController@show')->name('post.show');
 Route::get('/posts/{post}/edit', 'PostsController@edit')->name('post.edit');
 Route::patch('/posts/{post}', 'PostsController@update')->name('post.update');
+Route::delete('/posts/{post}', 'PostsController@destroy')->name('post.destroy');
 Route::post('/posts', 'PostsController@store');
 
 Route::post('/posts/{post}/comment', 'CommentsController@store');

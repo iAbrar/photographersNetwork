@@ -41,10 +41,12 @@
                     </button>
                     <div class="dropdown-menu" aria-labelledby="more">
                         <a class="dropdown-item" href="/posts/{{ $post->id }}/edit">Edit</a>
-                        <form>
+                        <form action="/posts/{{$post->id}}" method="post">
+                          @csrf
+                          @method('DELETE')
+
                             <button class="dropdown-item" type="submit">Delete</button>
                         </form>
-                        <a class="dropdown-item" href="#">Cancel</a>
                     </div>
                 </div>
 

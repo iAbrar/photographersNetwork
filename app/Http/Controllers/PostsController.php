@@ -77,4 +77,20 @@ class PostsController extends Controller
       return redirect("/posts/{$post->id}");
 
     }
+
+    public function destroy($id)
+    {
+      //$username = $post->user->username;
+
+
+      $post = Post::find($id);
+      $username = $post->user->username;
+      $post->delete();
+      
+      return redirect()->action(
+          'ProfilesController@index', ['username' => $username]
+      );
+
+    }
+
 }
