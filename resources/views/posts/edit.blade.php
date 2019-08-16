@@ -4,7 +4,7 @@
 <div class="container">
     <h3>Edit Post</h3>
     <form action="/posts/{{$post->id}}" enctype="multipart/form-data" method="post">
-      {{ method_field('PATCH') }}
+      @method('PATCH')
         @csrf <!-- need to remove -->
 
         <div class="row">
