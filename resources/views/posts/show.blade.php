@@ -34,23 +34,22 @@
                 <div>
                     {{ $post->caption }}
                 </div>
+                @can ('update', $post)
+                  <div class="dropdown">
+                      <button class="btn btn-primary-outline" type="button" id="more" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fas fa-ellipsis-h"></i>
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="more">
+                          <a class="dropdown-item" href="/posts/{{ $post->id }}/edit">Edit</a>
+                          <form action="/posts/{{$post->id}}" method="post">
+                            @csrf
+                            @method('DELETE')
 
-                <div class="dropdown">
-                    <button class="btn btn-primary-outline" type="button" id="more" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-h"></i>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="more">
-                        <a class="dropdown-item" href="/posts/{{ $post->id }}/edit">Edit</a>
-                        <form action="/posts/{{$post->id}}" method="post">
-                          @csrf
-                          @method('DELETE')
-
-                            <button class="dropdown-item" type="submit">Delete</button>
-                        </form>
-                    </div>
-                </div>
-
-
+                              <button class="dropdown-item" type="submit">Delete</button>
+                          </form>
+                      </div>
+                  </div>
+                @endcan
             </div>
 
             <div class="row pt-2">

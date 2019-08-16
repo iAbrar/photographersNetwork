@@ -12,7 +12,7 @@ class PostsController extends Controller
 
     public function __construct()
     {
-      //$this->middleware('auth');
+      $this->middleware('auth')->except(['timeLine','show']);
     }
     public function timeLine()
     {
@@ -58,8 +58,7 @@ class PostsController extends Controller
     public function edit(Post $post)
     {
 
-      //$this->authorize('update',$post);
-
+    //  $this->authorize('update', $post);
       return view('posts.edit',compact('post'));
     }
 
@@ -83,10 +82,10 @@ class PostsController extends Controller
       //$username = $post->user->username;
 
 
-      $post = Post::find($id);
+      $post = Post::findOrFail($id);
       $username = $post->user->username;
       $post->delete();
-      
+
       return redirect()->action(
           'ProfilesController@index', ['username' => $username]
       );
