@@ -11,6 +11,8 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
+    <!-- Fontawesome -->
+    <script src="https://kit.fontawesome.com/c8f77d7d5d.js"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
@@ -52,7 +54,7 @@
                         @endif
                         @else
                         <li class="nav-item">
-                            <a class="nav-link" href="/post/create">add post</a>
+                            <a class="nav-link" href="/posts/create">add post</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

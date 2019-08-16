@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h3>Add new Post</h3>
-    <form action="/post" enctype="multipart/form-data" method="post">
+    <form action="/posts" enctype="multipart/form-data" method="post">
         @csrf <!-- need to remove -->
         <div class="row">
             <div class="col-8 offset-2">

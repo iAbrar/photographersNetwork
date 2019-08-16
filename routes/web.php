@@ -17,10 +17,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/post/create', 'PostsController@create');
-Route::get('/post/{post}', 'PostsController@show');
-Route::post('/post', 'PostsController@store');
-Route::post('/post/{post}/comment', 'CommentsController@store');
+Route::get('/posts/create', 'PostsController@create');
+Route::get('/posts', 'PostsController@timeLine');
+Route::get('/posts/{post}', 'PostsController@show')->name('post.show');
+Route::get('/posts/{post}/edit', 'PostsController@edit')->name('post.edit');
+Route::patch('/posts/{post}', 'PostsController@update')->name('post.update');
+Route::post('/posts', 'PostsController@store');
+
+Route::post('/posts/{post}/comment', 'CommentsController@store');
 
 Route::get('/home', 'HomeController@index');
 
