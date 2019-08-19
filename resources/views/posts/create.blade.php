@@ -2,41 +2,58 @@
 
 @section('content')
 <div class="container">
-    <h3>Add new Post</h3>
-    <form action="/posts" enctype="multipart/form-data" method="post">
-        @csrf <!-- need to remove -->
-        <div class="row">
-            <div class="col-8 offset-2">
-                <div class="form-group row">
-                    <label for="caption" class="col-form-label ">Post Caption</label>
+    <div class="row justify-content-center">
+        <div class="col-8 offset-2">
+            <div class="card">
+                <div class="card-header">New Post</div>
+                <div class="card-body">
+                    <form action="/posts" enctype="multipart/form-data" method="post">
+                        @csrf <!-- need to remove -->
+                        <div class="form-group row">
+                            <label for="caption" class="col-md-4 col-form-label text-md-right">Post Caption</label>
 
-                    <input id="caption" type="text" class="form-control @error('caption') is-invalid @enderror" name="caption" value="{{ old('caption') }}" required autocomplete="caption" autofocus>
+                            <div class="col-md-6">
+                                <textarea id="caption" class="form-control @error('caption') is-invalid @enderror" name="caption" required autocomplete="caption" autofocus></textarea>
+                                @error('caption')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
 
-                    @error('caption')
-                    <span class="invalid-feedback" role="alert">
+                        </div>
+
+
+                      <div class="form-group col-md-8 m-auto">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="file">Upload</span>
+                            </div>
+                            <div class="custom-file ">
+                                <input type="file" class="custom-file-input" name="image" id="image" aria-describedby="file">
+                                <label class="custom-file-label" for="image">Choose image</label>
+                            </div>
+
+                        </div>
+                        @error('image')
                         <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
+                        @enderror
+                      </div>
 
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-8 offset-md-4 custom-btn-group mt-4">
+                                <button class="btn custom-btn custom-btn-bg custom-btn-link">New Post</button>
+                            </div>
+                        </div>
                 </div>
-
-                <div class="row">
-
-                    <label for="image" class="col-form-label ">Post Image</label>
-
-                    <input type="file" class="form-control-file" name="image" id="image">
-
-                    @error('image')
-                    <strong>{{ $message }}</strong>
-                    @enderror
-                </div>
-
-                <div class="row pt-5">
-                    <button class="btn btn-primary">New Post</button>
-                </div>
+                </form>
             </div>
         </div>
-    </form>
+    </div>
+</div>
+
 
 </div>
+
 @endsection
