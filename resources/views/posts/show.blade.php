@@ -32,7 +32,7 @@
             </div>
             <div class="row pt-2 align-items-baseline">
                 <div>
-                    {{ $post->caption }}
+                    {!!nl2br(e($post->caption)) !!} <!-- is this safe way to use lines?-->
                 </div>
                 @can ('update', $post)
                   <div class="dropdown">
