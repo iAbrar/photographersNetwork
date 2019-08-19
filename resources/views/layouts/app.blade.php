@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Lens•') }}</title>
 
     <!-- Scripts -->
     <!-- Fontawesome -->
@@ -21,27 +21,31 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/unicons.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <!-- MAIN STYLE -->
+    <link rel="stylesheet" href="css/tooplate-style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <!-- MENU -->
+        <nav class="navbar navbar-expand-sm navbar-light ">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <a class="navbar-brand" href="{{ url('/') }}"> <span class="icon-len"></span>
+                    {{ config('app.name', 'Lens•') }}</a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span>
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
+                <div class="collapse navbar-collapse " id="navbarNav">
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav mx-auto ">
                         <!-- Authentication Links -->
                         @guest
                         <li class="nav-item">
@@ -53,17 +57,20 @@
                         </li>
                         @endif
                         @else
+                        <li class="nav-item" class="nav-link">
+                            <a href="{{ url('/home') }} " class="nav-link"><span data-hover="Home">Home</span></a>
+                        </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/posts/create">add post</a>
+                            <a class="nav-link" href="/posts/create"><span data-hover="add post">add post</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->username }} <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                              <a class="dropdown-item" href="/profile/{{Auth::user()->id}}/edit">
-                                  Edit profile                                </a>
+                                <a class="dropdown-item" href="/profile/{{Auth::user()->id}}/edit">
+                                    Edit profile </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
@@ -84,6 +91,18 @@
             @yield('content')
         </main>
     </div>
+    <!-- FOOTER -->
+    <footer class="footer py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-12">
+                    <p class="copyright-text text-center">Copyright &copy; 2019 Lens• All rights reserved</p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
 </body>
 
 </html>
