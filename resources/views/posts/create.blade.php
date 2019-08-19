@@ -9,22 +9,22 @@
                 <div class="card-body">
                     <form action="/posts" enctype="multipart/form-data" method="post">
                         @csrf <!-- need to remove -->
-                        <div class="form-group row">
-                            <label for="caption" class="col-md-4 col-form-label text-md-right">Post Caption</label>
+                        <div class="form-group col-md-10 mx-auto">
+                            <label for="caption" class=" col-form-label text-md-right">Post Caption</label>
 
-                            <div class="col-md-6">
+
                                 <textarea id="caption" class="form-control @error('caption') is-invalid @enderror" name="caption" required autocomplete="caption" autofocus></textarea>
                                 @error('caption')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
-                            </div>
+
 
                         </div>
 
 
-                      <div class="form-group col-md-8 m-auto">
+                      <div class="form-group col-md-10 m-auto">
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="file">Upload</span>
