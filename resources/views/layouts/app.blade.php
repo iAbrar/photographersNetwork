@@ -11,6 +11,9 @@
     <title>{{ config('app.name', 'Lens•') }}</title>
 
     <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
     <!-- Fontawesome -->
     <script src="https://kit.fontawesome.com/c8f77d7d5d.js"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -21,13 +24,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/unicons.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="{{asset('css/unicons.css')}}">
+    <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/owl.theme.default.min.css')}}">
     <!-- MAIN STYLE -->
-    <link rel="stylesheet" href="css/tooplate-style.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{asset('css/tooplate-style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
 </head>
 
 <body>
@@ -102,7 +104,7 @@
             </div>
         </div>
     </footer>
-
+  <script src="{{ asset('js/fileUpload.js') }}" defer></script>
 </body>
 
 </html>
