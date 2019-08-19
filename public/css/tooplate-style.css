@@ -166,6 +166,7 @@ b, strong {
   }
 }
 .navbar {
+  background-color: #fff;
   position: fixed;
   top: 0;
   right: 0;
