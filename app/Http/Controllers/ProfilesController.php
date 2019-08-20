@@ -28,14 +28,16 @@ class ProfilesController extends Controller
       'url' => 'url',
       'avatar' => 'image',
     ]);
-
+    
     if(request('avatar')){
       $imagePath = request('avatar')->store('profile','public');
       // resize the image to be a square
       $image = Image::make(public_path("storage/{$imagePath}"))->fit(500,500); // what is the difference between ' and " in this case?
       $image->save();
     }
-
+    else{
+      $imagePath = $user->profile->avatar;
+    }
     auth()->user()->profile->update(array_merge(
       $data,
       ['avatar' => $imagePath]
