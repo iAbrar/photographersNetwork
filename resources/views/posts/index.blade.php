@@ -1,18 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <h3>Time Line </h3>
     <div class="row">
+
+      <div id="justify-gallery" class="col-10 mx-auto">
         @foreach ($posts as $post)
-        <div class="col-4 pt-3">
-            <a href="/posts/{{$post->id}}"> <img src="/storage/{{$post->image }}" class="w-100" alt="">
+
+            <a href="/posts/{{$post->id}}"> <img src="/storage/{{$post->image }}" alt="">
             </a>
-        </div>
+
         @endforeach
 
     </div>
-
+</div>
 </div>
 
 @endsection

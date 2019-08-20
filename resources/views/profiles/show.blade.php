@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="text-center">
         <img src="/storage/{{ $user->profile->avatar}}" class="rounded-circle" width="100px;" alt="">
         <!--profile image-->
@@ -33,11 +33,13 @@
 
     <div class="row">
 
+      <div id="justify-gallery" class="col-10 mx-auto">
         @foreach ($user->posts as $post)
-        <div class="col-4 pt-4">
-            <a href="/posts/{{ $post->id }}"><img src="/storage/{{ $post-> image}}" class="w-100" alt=""></a>
-        </div>
+
+            <a href="/posts/{{ $post->id }}"><img src="/storage/{{ $post-> image}}" alt=""></a>
+
         @endforeach
+      </div>
 
     </div>
 </div>
