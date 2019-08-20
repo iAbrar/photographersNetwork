@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10 ">
             <div class="row">
-                <img src="/storage/{{ $post->image }}" class="img-fluid" alt="">
+                <img src="/storage/{{ $post->image }}" class="w-100" alt="">
             </div>
             <div class="row d-flex px-3 justify-content-between">
 
