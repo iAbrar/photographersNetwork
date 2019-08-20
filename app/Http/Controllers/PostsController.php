@@ -37,7 +37,7 @@ class PostsController extends Controller
       $imagePath = request('image')->store('uploads','public');
 
       // resize the image to be a square
-      $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200,1200); // what is the difference between ' and " in this case?
+      $image = Image::make(public_path("storage/{$imagePath}"));//->fit(1200,1200); // what is the difference between ' and " in this case?
       $image->save();
 
       auth()->user()->posts()->create([
