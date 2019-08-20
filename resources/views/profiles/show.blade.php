@@ -2,44 +2,37 @@
 
 @section('content')
 <div class="container-fluid">
-    <div class="text-center">
-        <img src="/storage/{{ $user->profile->avatar}}" class="rounded-circle" width="100px;" alt="">
+    <div class="w-50 m-auto text-center py-5">
+        <img src="/storage/{{ $user->profile->avatar}}" class="rounded-circle" width="150px;" alt="">
         <!--profile image-->
-        <div class="">
+        <h4 class="pt-4">
             {{ $user->name }}
-        </div>
-        <div class="">
+        </h4>
+        <p class="text-muted ">
             {{ $user->profile->bio }}
-        </div>
-        <div class="">
-            {{ $user->posts->count() }} posts # claps # photoviews
-        </div>
-        <div class="">
+        </p>
+        <p class="d-flex w-50 justify-content-between m-auto">
+            <span><strong>{{ $user->posts->count() }}</strong> posts</span> <span><strong>#</strong> claps</span>
+            @if ($user->profile->is_available)
+            <span>Available for Hire</span>
+            @endif
+
+        </p>
+        <p class="">
             <a href="{{ $user->profile->url}}"> {{ $user->profile->url}}</a>
-        </div>
-        <div class="row">
-            <div class="col-4">
-                <h5>Availabilities</h5>
-                {{ $user->profile->avaliableToHire }}
-            </div>
-            <div class="col-4">
-                <h5>Cameras</h5>
-            </div>
-            <div class="col-4">
-                <h5>Specialties</h5>
-            </div>
-        </div>
+        </p>
+
     </div>
 
-    <div class="row">
+    <div class="row bg-white">
 
-      <div id="justify-gallery" class="col-10 mx-auto">
-        @foreach ($user->posts as $post)
+        <div id="justify-gallery" class="col-10 mx-auto">
+            @foreach ($user->posts as $post)
 
             <a href="/posts/{{ $post->id }}"><img src="/storage/{{ $post-> image}}" alt=""></a>
 
-        @endforeach
-      </div>
+            @endforeach
+        </div>
 
     </div>
 </div>

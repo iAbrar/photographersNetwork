@@ -18,7 +18,7 @@ class CreateProfilesTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->text('bio')->nullable();
             $table->string('url')->nullable();
-            $table->boolean('avaliableToHire')->nullable(); // ask about best way to save this kind of data
+            $table->boolean('is_available')->default(0); // ask about best way to save this kind of data
             $table->string('avatar')->nullable();
             $table->timestamps();
 

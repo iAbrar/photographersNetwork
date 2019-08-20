@@ -28,7 +28,8 @@ class ProfilesController extends Controller
       'url' => 'url',
       'avatar' => 'image',
     ]);
-    
+    $is_avaliable= request()->has('is_available');
+
     if(request('avatar')){
       $imagePath = request('avatar')->store('profile','public');
       // resize the image to be a square
@@ -40,7 +41,8 @@ class ProfilesController extends Controller
     }
     auth()->user()->profile->update(array_merge(
       $data,
-      ['avatar' => $imagePath]
+      ['avatar' => $imagePath],
+    ['is_available' => $is_avaliable]
     ));
 
     return redirect("/{$user->username}");
