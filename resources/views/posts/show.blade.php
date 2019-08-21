@@ -69,13 +69,16 @@
 
                 <fieldset class="form-group">
 
-                    <textarea type="text" class="form-control" name="body" placeholder="your comment"></textarea>
+                    <textarea type="text" class="form-control" name="body" placeholder="your comment" required autofocus></textarea>
                 </fieldset>
                 <fieldset class="form-group">
                     <button class="btn custom-btn custom-btn-bg custom-btn-link">Add Comment</button>
                 </fieldset>
 
             </form>
+            @error('body')
+            <strong>{{ $message }}</strong>
+            @enderror
         </div>
     </div>
     <hr width="85%">
@@ -87,11 +90,11 @@
             <div class="card mb-3">
                 <div class="row no-gutters">
                     <div class="col-md-2">
-                        <img src="/storage/{{ $post->user->profile->avatar}}" class="card-img rounded-circle p-3" alt="...">
+                        <img src="{{ $post->user->profile->avatar}}" class="card-img rounded-circle p-3" alt="...">
                     </div>
                     <div class="col-md-10">
                         <div class="card-body">
-                            <h5 class="card-title">Username</h5>
+                            <h5 class="card-title">{{ $post->user->username }}</h5>
                             <p class="card-text text-justify pr-4">{{ $comment->body }}</p>
                             <p class="card-text"><small class="text-muted">Last updated {{ Carbon\Carbon::parse($comment->updated_at)->diffForHumans() }}</small></p>
                         </div>
