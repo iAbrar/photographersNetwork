@@ -41,7 +41,7 @@ class ProfilesController extends Controller
     }
     auth()->user()->profile->update(array_merge(
       $data,
-      ['avatar' => $imagePath],
+      ['avatar' => '/storage/'. $imagePath],
     ['is_available' => $is_avaliable]
     ));
 

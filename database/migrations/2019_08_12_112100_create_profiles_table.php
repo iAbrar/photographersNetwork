@@ -19,7 +19,7 @@ class CreateProfilesTable extends Migration
             $table->text('bio')->nullable();
             $table->string('url')->nullable();
             $table->boolean('is_available')->default(0); // ask about best way to save this kind of data
-            $table->string('avatar')->nullable();
+            $table->string('avatar')->default('/images/profile.png');
             $table->timestamps();
 
             $table->index('user_id'); // add index to all foreign key

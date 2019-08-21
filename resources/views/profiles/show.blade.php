@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid">
     <div class="w-50 m-auto text-center py-5">
-        <img src="/storage/{{ $user->profile->avatar}}" class="rounded-circle" width="150px;" alt="">
+        <img src="{{ $user->profile->avatar}}" class="rounded-circle" width="150px;" alt="">
         <!--profile image-->
         <h4 class="pt-4">
             {{ $user->name }}
