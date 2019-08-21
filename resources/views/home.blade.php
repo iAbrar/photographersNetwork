@@ -1,48 +1,31 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="text-center">
-        <img src="" alt="">
-        <!--profile image-->
-        <div class="">
-            name
-        </div>
-        <div class="">
-            bio
-        </div>
-        <div class="">
-            # posts # claps # photoviews
-        </div>
-        <div class="">
-            <a href="#">personal website</a>
-        </div>
-        <div class="row">
-            <div class="col-4">
-                <h5>Availabilities</h5>
-            </div>
-            <div class="col-4">
-                <h5>Cameras</h5>
-            </div>
-            <div class="col-4">
-                <h5>Specialties</h5>
+
+        @if ($user->posts->count() == 0 )
+
+            <img src="{{ asset('images/placeholder.png') }}" class="" alt="">
+            <p>You haven't uploaded any photos yet.</p>
+            <span>Get the most out of Lens• by uploading your photos and be seen by our global community.</span>
+
+        <div class="form-group">
+            <div class="custom-btn-group mt-4">
+                <a href="{{ url('/posts/create')}}" class="btn custom-btn custom-btn-bg custom-btn-link">New Post</a>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="container">
-            <div class="row">
-                <div class="col-4">
-                    <img src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png?v=1530129081" class="w-100" alt="">
-                </div>
-                <div class="col-4">
-                    <img src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png?v=1530129081" class="w-100" alt="">
-                </div>
-                <div class="col-4">
-                    <img src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png?v=1530129081" class="w-100" alt="">
-                </div>
-            </div>
+        @else
+          <h4 class="py-5">Your photos</h4>
+        <div id="justify-gallery" class="w-75 m-auto">
+            @foreach ($user->posts as $post)
+
+            <a href="/posts/{{ $post->id }}"><img src="/storage/{{ $post-> image}}" alt=""></a>
+
+            @endforeach
         </div>
+        @endif
+
     </div>
 </div>
 @endsection
