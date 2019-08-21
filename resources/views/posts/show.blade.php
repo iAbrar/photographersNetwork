@@ -62,23 +62,25 @@
     </div>
     <!--comment section -->
     <div class="row justify-content-center pt-5">
+        <div class="d-flex col-md-10 justify-content-between align-items-baseline">
+            <h3>Write a comments</h3> <p class="text-muted">{{ $post->comments->count() }} Comments</p>
+        </div>
         <div class="col-md-10">
-            <h3>Write a comments</h3>
-            <form action="/posts/{{$post->id}}/comment" method="post">
-                @csrf
+          <form action="/posts/{{$post->id}}/comment" method="post">
+              @csrf
 
-                <fieldset class="form-group">
+              <fieldset class="form-group">
 
-                    <textarea type="text" class="form-control" name="body" placeholder="your comment" required autofocus></textarea>
-                </fieldset>
-                <fieldset class="form-group">
-                    <button class="btn custom-btn custom-btn-bg custom-btn-link">Add Comment</button>
-                </fieldset>
+                  <textarea type="text" class="form-control" name="body" placeholder="your comment" required autofocus></textarea>
+              </fieldset>
+              <fieldset class="form-group">
+                  <button class="btn custom-btn custom-btn-bg custom-btn-link">Add Comment</button>
+              </fieldset>
 
-            </form>
-            @error('body')
-            <strong>{{ $message }}</strong>
-            @enderror
+          </form>
+          @error('body')
+          <strong>{{ $message }}</strong>
+          @enderror
         </div>
     </div>
     <hr width="85%">
@@ -90,11 +92,19 @@
             <div class="card mb-3">
                 <div class="row no-gutters">
                     <div class="col-md-2">
-                        <img src="{{ $post->user->profile->avatar}}" class="card-img rounded-circle p-3" alt="...">
+                      @if ($comment->user_id == 0)
+                        <img src="{{ $comment->avatar }}" class="card-img rounded-circle p-3" alt="...">
+                      @else
+                        <img src="{{ $comment->user->profile->avatar }}" class="card-img rounded-circle p-3" alt="...">
+                      @endif
                     </div>
                     <div class="col-md-10">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $post->user->username }}</h5>
+                          @if ($comment->user_id == 0)
+                            <h5 class="card-title">{{ $comment->name }}</h5>
+                          @else
+                            <h5 class="card-title">{{ $comment->user->profile->username }}</h5>
+                          @endif
                             <p class="card-text text-justify pr-4">{{ $comment->body }}</p>
                             <p class="card-text"><small class="text-muted">Last updated {{ Carbon\Carbon::parse($comment->updated_at)->diffForHumans() }}</small></p>
                         </div>

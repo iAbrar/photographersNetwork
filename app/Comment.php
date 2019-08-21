@@ -8,7 +8,12 @@ class Comment extends Model
 {
 
   // fields can be filled
-  protected $fillable = ['body', 'post_id'];
+  protected $fillable = ['body', 'user_id','post_id','name','avatar'];
+
+  public function user()
+  {
+    return $this->belongsTo(User::class);
+  }
 
   public function post()
   {
