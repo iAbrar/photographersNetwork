@@ -17,7 +17,7 @@
     <!-- Fontawesome -->
     <script src="https://kit.fontawesome.com/c8f77d7d5d.js"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
-  <script src="{{ asset('js/script.js') }}" defer></script>
+    <script src="{{ asset('js/script.js') }}" defer></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -64,6 +64,9 @@
                             <a href="{{ url('/home') }} " class="nav-link"><span data-hover="Home">Home</span></a>
                         </li>
                         <li class="nav-item">
+                            <a href="/posts" class="nav-link"><span data-hover="Timeline">Timeline</span></a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="/posts/create"><span data-hover="add post">add post</a>
                         </li>
                         <li class="nav-item dropdown">
@@ -106,17 +109,17 @@
         </div>
     </footer>
     <script type="text/javascript">
-    $(document).ready(function() {
+        $(document).ready(function() {
 
-      $('#justify-gallery').justifiedGallery({
-          rowHeight : 400,
-          lastRow : 'nojustify',
-          margins : 30
-      });
+            $('#justify-gallery').justifiedGallery({
+                rowHeight: 400,
+                lastRow: 'nojustify',
+                margins: 30
+            });
 
-  });
+        });
     </script>
-  <script src="{{ asset('js/fileUpload.js') }}" defer></script>
+    <script src="{{ asset('js/fileUpload.js') }}" defer></script>
 </body>
 
 </html>
