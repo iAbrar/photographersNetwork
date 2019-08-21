@@ -23,7 +23,7 @@
                     <div class="row d-flex justify-content-between align-items-baseline p-3">
                         <div class="d-flex justify-content-between align-items-baseline">
                             <div class="pr-2">
-                                <img src="/storage/{{ $post->user->profile->avatar}}" class="rounded-circle" width="50px;" alt="">
+                                <img src="{{ $post->user->profile->avatar}}" class="rounded-circle" width="50px;" alt="">
                             </div>
                             <h5>
                                 By <strong class="pl-1"><a href="/{{ $post->user->username }}">{{ $post->user->username }}</a></strong>
@@ -103,7 +103,7 @@
                           @if ($comment->user_id == 0)
                             <h5 class="card-title">{{ $comment->name }}</h5>
                           @else
-                            <h5 class="card-title">{{ $comment->user->profile->username }}</h5>
+                            <h5 class="card-title">{{ $comment->user->username }}</h5>
                           @endif
                             <p class="card-text text-justify pr-4">{{ $comment->body }}</p>
                             <p class="card-text"><small class="text-muted">Last updated {{ Carbon\Carbon::parse($comment->updated_at)->diffForHumans() }}</small></p>
