@@ -35,13 +35,14 @@ class ProfilesController extends Controller
       // resize the image to be a square
       $image = Image::make(public_path("storage/{$imagePath}"))->fit(500,500); // what is the difference between ' and " in this case?
       $image->save();
+      $imagePath = '/storage/'. $imagePath;
     }
     else{
       $imagePath = $user->profile->avatar;
     }
     auth()->user()->profile->update(array_merge(
       $data,
-      ['avatar' => '/storage/'. $imagePath],
+      ['avatar' =>  $imagePath],
     ['is_available' => $is_avaliable]
     ));
 
