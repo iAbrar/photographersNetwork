@@ -37,23 +37,23 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                     @if (Route::has('login'))
-                        <li class="nav-item">
-                            <a href="/posts" class="nav-link"><span data-hover="Timeline">Timeline</span></a>
-                        </li>
-                        @auth
-                        <li class="nav-item" class="nav-link">
-                            <a href="{{ url('/home') }} " class="nav-link"><span data-hover="Home">Home</span></a>
-                        </li>
-                        @else
-                        <li class="nav-item" class="nav-link">
-                            <a href="{{ route('login') }}" class="nav-link"><span data-hover="Login">Login</span></a>
-                        </li>
-                        @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a href="{{ route('register') }}" class="nav-link"><span data-hover="Register">Register</span></a>
-                        </li>
-                        @endif
-                        @endauth
+                    <li class="nav-item">
+                        <a href="/posts" class="nav-link"><span data-hover="Timeline">Timeline</span></a>
+                    </li>
+                    @auth
+                    <li class="nav-item" class="nav-link">
+                        <a href="{{ url('/home') }} " class="nav-link"><span data-hover="Home">Home</span></a>
+                    </li>
+                    @else
+                    <li class="nav-item" class="nav-link">
+                        <a href="{{ route('login') }}" class="nav-link"><span data-hover="Login">Login</span></a>
+                    </li>
+                    @if (Route::has('register'))
+                    <li class="nav-item">
+                        <a href="{{ route('register') }}" class="nav-link"><span data-hover="Register">Register</span></a>
+                    </li>
+                    @endif
+                    @endauth
                     @endif
                 </ul>
 
@@ -93,7 +93,7 @@
     </section>
 
     <!-- PROJECTS -->
-    <section class="project py-5" >
+    <section class="project py-5">
         <div class="container">
 
             <div class="row">
@@ -104,40 +104,38 @@
                     </div>
 
                     <div class="owl-carousel owl-theme">
-                        <div class="item">
-                            <div class="project-info">
-                                <img src="images/project/project-image01.png" class="img-fluid" alt="project image">
-                            </div>
-                        </div>
+                       <div class="item">
+                         <div class="project-info">
+                           <img src="images/project/project-image01.png" class="img-fluid" alt="project image">
+                         </div>
+                       </div>
 
-                        <div class="item">
-                            <div class="project-info">
-                                <img src="images/project/project-image02.png" class="img-fluid" alt="project image">
-                            </div>
-                        </div>
+                       <div class="item">
+                         <div class="project-info">
+                           <img src="images/project/project-image02.png" class="img-fluid" alt="project image">
+                         </div>
+                       </div>
 
-                        <div class="item">
-                            <div class="project-info">
-                                <img src="images/project/project-image03.png" class="img-fluid" alt="project image">
-                            </div>
-                        </div>
+                       <div class="item">
+                         <div class="project-info">
+                           <img src="images/project/project-image03.png" class="img-fluid" alt="project image">
+                         </div>
+                       </div>
 
-                        <div class="item">
-                            <div class="project-info">
-                                <img src="images/project/project-image04.png" class="img-fluid" alt="project image">
-                            </div>
-                        </div>
+                       <div class="item">
+                         <div class="project-info">
+                           <img src="images/project/project-image04.png" class="img-fluid" alt="project image">
+                         </div>
+                       </div>
 
-                        <div class="item">
-                            <div class="project-info">
-                                <img src="images/project/project-image05.png" class="img-fluid" alt="project image">
-                            </div>
-                        </div>
-                    </div>
-
+                       <div class="item">
+                         <div class="project-info">
+                           <img src="images/project/project-image05.png" class="img-fluid" alt="project image">
+                         </div>
+                       </div>
+                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
     <!-- FOOTER -->
@@ -151,7 +149,14 @@
             </div>
         </div>
     </footer>
-
+    <script src="js/jquery-3.3.1.min.js"></script>
+      <script src="js/popper.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/Headroom.js"></script>
+      <script src="js/jQuery.headroom.js"></script>
+      <script src="js/owl.carousel.min.js"></script>
+      <script src="js/smoothscroll.js"></script>
+      <script src="js/custom.js"></script>
 
 </body>
 
