@@ -13,20 +13,33 @@ This is a starter template for web project contains index.html(bootstrap 4) and 
 
 
 ## API Reference
-
+n/a
 
 ## Technology:
 - HTML
-- JS
-- Ajax
+- jQuery
+- CSS
 - Bootstrap 4
+- Laravel
 
+
+## Credits:
+- Icons made by [www.flaticon.com](www.flaticon.com)
+- Vector made by [Freepik](https://www.freepik.com)
+- Create icon font by [IcoMoon](https://icomoon.io/)
+- HTML template designed by [tooplate](https://www.facebook.com/tooplate)
 
 ## Resources I used them:
-1.
-2.
+- [Laravel PHP Framework Tutorial - Full Course for Beginners (2019)](https://www.youtube.com/watch?v=ImtZ5yENzgE)
+- [Bootstrap 4.3](https://getbootstrap.com/)
+- [Laracast](https://laracasts.com/)
 
 ## Future Checklist:
-- [ ] uncompleted
+- [ ] add clap function
+- [ ] add photo category
+- [ ] refactor the code
+- [ ] add photo storage
+- [ ] add search function
+- [ ] add user setting
+- [ ] enable login by username
 - [x] completed :muscle:
-
