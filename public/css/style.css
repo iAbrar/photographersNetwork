@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('/font/icomoon.eot?5im8es');
-  src:  url('/font/icomoon.eot?5im8es#iefix') format('embedded-opentype'),
-    url('/font/icomoon.ttf?5im8es') format('truetype'),
-    url('/font/icomoon.woff?5im8es') format('woff'),
-    url('/font/icomoon.svg?5im8es#icomoon') format('svg');
+  src:  url('/font/icomoon.eot?b8g6bp');
+  src:  url('/font/icomoon.eot?b8g6bp#iefix') format('embedded-opentype'),
+    url('/font/icomoon.ttf?b8g6bp') format('truetype'),
+    url('/font/icomoon.woff?b8g6bp') format('woff'),
+    url('/font/icomoon.svg?b8g6bp#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -12,8 +12,8 @@
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
-  font-size: 30px;
   speak: none;
+  font-size: 30px;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -25,6 +25,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-len:before {
+.icon-work:before {
   content: "\e900";
+}
+.icon-clap:before {
+  content: "\e901";
+}
+.icon-len:before {
+  content: "\e902";
 }

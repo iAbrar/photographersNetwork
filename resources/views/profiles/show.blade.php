@@ -14,7 +14,7 @@
         <p class="d-flex w-50 justify-content-between m-auto">
             <span><strong>{{ $user->posts->count() }}</strong> posts</span> <span><strong>#</strong> claps</span>
             @if ($user->profile->is_available)
-            <span>Available for Hire</span>
+            <span><span class="icon-work"></span> Available to Hire</span>
             @endif
 
         </p>

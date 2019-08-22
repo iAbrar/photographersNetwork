@@ -7,16 +7,15 @@
             <div class="row">
                 <img src="/storage/{{ $post->image }}" class="w-100" alt="">
             </div>
-            <div class="row d-flex px-3 justify-content-between">
+            <div class="row d-flex p-3 align-items-baseline justify-content-between">
+              <p class="p-3">
+          <span class="icon-clap"></span><small><strong>#</strong> claps </small>
+           </p>
+                <p>
+                    <small>{{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</small>
+                </p>
+            </div>
 
-                <div> # claps</div>
-                <div>
-                    calender icon {{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}
-                </div>
-            </div>
-            <div class="row px-3">
-                Category: <span class="pl-2">i have to add category of the image</span>
-            </div>
             <hr>
             <div class="card">
                 <div class="card-body">
