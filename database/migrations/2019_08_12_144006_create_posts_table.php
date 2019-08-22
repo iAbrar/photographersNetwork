@@ -18,7 +18,6 @@ class CreatePostsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->text('caption')->nullable();
             $table->string('image')->nullable();
-            $table->integer('claps')->nullable();
             $table->timestamps();
 
             $table->index('user_id'); // add index to all foreign key
