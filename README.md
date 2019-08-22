@@ -6,17 +6,18 @@ This is a social network for photographers to help them build a portfolio and co
 
 ## Project Screen Shot(s)
 Landing page
-
 ![](https://github.com/iAbrar/photographersNetwork/blob/master/2.png)
 
 Timeline
 ![](https://github.com/iAbrar/photographersNetwork/blob/master/1.png)
+
 
 ## Installation and Setup Instructions
 1. Download the project or clone the repository by
 2. Open the project folder in terminal
 3. Run code  `php artisan serve`
 4. Copy the url and past it in your browser
+
 
 ## API Reference
 n/a
