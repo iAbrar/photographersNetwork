@@ -17,6 +17,16 @@
             </div>
 
             <hr>
+            @if(Session::has('success'))
+            <div class="alert alert-success" role="alert">
+                <strong>Success</strong>{{ Session::pull('success') }}
+            </div>
+            @endif
+            @if(Session::has('error'))
+            <div class="alert alert-danger" role="alert">
+                <strong>Eroor</strong>{{ Session::pull('error') }}
+            </div>
+            @endif
             <div class="card">
                 <div class="card-body">
                     <div class="row d-flex justify-content-between align-items-baseline p-3">

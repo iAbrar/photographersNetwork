@@ -45,7 +45,7 @@ try{
         'caption' => $data['caption'],
         'image' => $imagePath,
       ]);
-    } catch (\Illuminate\Database\QueryException $e) {
+    } catch (\Exception $e) {
 
          session()->flash('error', 'There was an error');
          return redirect()->back();
@@ -79,7 +79,15 @@ try{
       //  $post->caption->update($data); why it doesnt work ?
       //$post->caption-=$data['caption'];
       $post->caption=$data['caption'];
-      $post->save();
+try {
+  $post->save();
+
+} catch (\Exception $e) {
+  session()->flash('error', 'There was an error');
+  return redirect()->back();
+}
+
+       session()->flash('success', ' Your post has been updated!');
       return redirect("/posts/{$post->id}");
 
     }
