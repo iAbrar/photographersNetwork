@@ -40,11 +40,18 @@ class PostsController extends Controller
       $image = Image::make(public_path("storage/{$imagePath}"));//->fit(1200,1200); // what is the difference between ' and " in this case?
       $image->save();
 
+try{
       auth()->user()->posts()->create([
         'caption' => $data['caption'],
         'image' => $imagePath,
       ]);
+    } catch (\Illuminate\Database\QueryException $e) {
 
+         session()->flash('error', 'There was an error');
+         return redirect()->back();
+       }
+
+       session()->flash('success', ' Your image has been uploaded!');
       return redirect()->action(
           'ProfilesController@index', ['username' => auth()->user()->username]
       );
