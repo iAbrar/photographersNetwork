@@ -40,11 +40,18 @@ class ProfilesController extends Controller
     else{
       $imagePath = $user->profile->avatar;
     }
-    auth()->user()->profile->update(array_merge(
-      $data,
-      ['avatar' =>  $imagePath],
-    ['is_available' => $is_avaliable]
-    ));
+
+    try {
+      auth()->user()->profile->update(array_merge(
+        $data,
+        ['avatar' =>  $imagePath],
+      ['is_available' => $is_avaliable]
+      ));
+    } catch (\Exception $e) {
+      session()->flash('error', 'There was an error');
+    }
+
+    session()->flash('success', ' Your profile has been updated!');
 
     return redirect("/{$user->username}");
 

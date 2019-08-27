@@ -48,7 +48,6 @@ try{
     } catch (\Exception $e) {
 
          session()->flash('error', 'There was an error');
-         return redirect()->back();
        }
 
        session()->flash('success', ' Your image has been uploaded!');
@@ -84,7 +83,6 @@ try {
 
 } catch (\Exception $e) {
   session()->flash('error', 'There was an error');
-  return redirect()->back();
 }
 
        session()->flash('success', ' Your post has been updated!');
