@@ -15,8 +15,11 @@
         <p class="text-muted ">
             {{ $user->profile->bio }}
         </p>
-        <p class="d-flex col-lg-6 justify-content-between m-auto">
-            <span><strong>{{ $user->posts->count() }}</strong> posts</span> <span><strong>#</strong> claps</span>
+        <p class="d-flex col-lg-8 justify-content-between m-auto">
+            <span><strong>{{ $user->posts->count() }}</strong> posts</span>
+            <span><strong>{{ $user->profile->followers->count() }}</strong> followers</span>
+            <span><strong>{{ $user->following->count() }}</strong> following</span>
+            <span><strong>#</strong> claps</span>
             @if ($user->profile->is_available)
             <span><span class="icon-work"></span> Available to Hire</span>
             @endif
