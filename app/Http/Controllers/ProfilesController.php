@@ -11,9 +11,10 @@ class ProfilesController extends Controller
 {
   public function index($username)
   {
-      $user = User::where('username', $username)->firstOrFail();
 
-      return view('profiles.show', compact('user'));
+      $user = User::where('username', $username)->firstOrFail();
+      $follows = (auth()->user()) ? auth()->user()->following->contains($user->id) : false;
+      return view('profiles.show', compact('user','follows'));
   }
 
   public function edit(User $user)

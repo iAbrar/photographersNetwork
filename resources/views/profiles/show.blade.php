@@ -5,9 +5,13 @@
     <div class="col-lg-6 m-auto text-center py-5">
         <img src="{{ $user->profile->avatar}}" class="rounded-circle" width="150px;" alt="">
         <!--profile image-->
-        <h4 class="pt-4">
+      <div class="my-4">
+        <h4 class="pt-4 d-inline pr-3">
             {{ $user->name }}
         </h4>
+        <follow-button user-id="{{ $user->id }}" @click='followUser' v-text="buttonText"><follow-button>
+      </div>
+
         <p class="text-muted ">
             {{ $user->profile->bio }}
         </p>

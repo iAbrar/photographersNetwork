@@ -17,8 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/posts/create', 'PostsController@create');
-Route::get('/posts', 'PostsController@timeLine');
+Route::get('/posts/create', 'PostsController@create')->name('post.create');
+Route::get('/posts', 'PostsController@timeLine')->name('post.index');
 Route::get('/posts/{post}', 'PostsController@show')->name('post.show');
 Route::get('/posts/{post}/edit', 'PostsController@edit')->name('post.edit');
 Route::patch('/posts/{post}', 'PostsController@update')->name('post.update');
@@ -32,3 +32,5 @@ Route::get('/home', 'HomeController@index');
 Route::get('/{username}', 'ProfilesController@index')->name('profile.show');
 Route::get('/profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');
 Route::patch('/profile/{user}', 'ProfilesController@update')->name('profile.update');
+
+Route::post('/follow/{user}', 'FollowsController@store');
