@@ -9,7 +9,7 @@
         <h4 class="pt-4 d-inline pr-3">
             {{ $user->name }}
         </h4>
-        <follow-button user-id="{{ $user->id }}" @click='followUser' v-text="buttonText"><follow-button>
+        <follow-button user-id="{{ $user->id }}"  follow=" {{ $follows }} "><follow-button>
       </div>
 
         <p class="text-muted ">

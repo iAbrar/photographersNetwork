@@ -1,5 +1,5 @@
 <template>
-<button class="btn btn-primary" @click="followUser" v-text="buttonText">Follow</button>
+<button class="btn btn-primary" @click="followUser" v-text="buttonText"></button>
 </template>
 
 <script>
@@ -19,14 +19,12 @@
 
         methods: {
           followUser(){
-            axios.post('/follow/' + this.userId )
+            axios.post('/follow/' + this.userId)
               .then(response => {
                 this.status = ! this.status;
-
-                console.log(response.data);
               })
               .catch(error => {
-               if(errors.data.status == 401){
+               if(error.response.status == 401){
                   window.location = '/login';
                }
               });

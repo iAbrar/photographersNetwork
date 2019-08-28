@@ -1858,9 +1858,8 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.post('/follow/' + this.userId).then(function (response) {
         _this.status = !_this.status;
-        console.log(response.data);
       })["catch"](function (error) {
-        if (errors.data.status == 401) {
+        if (error.response.status == 401) {
           window.location = '/login';
         }
       });
@@ -37169,15 +37168,11 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "button",
-    {
-      staticClass: "btn btn-primary",
-      domProps: { textContent: _vm._s(_vm.buttonText) },
-      on: { click: _vm.followUser }
-    },
-    [_vm._v("Follow")]
-  )
+  return _c("button", {
+    staticClass: "btn btn-primary",
+    domProps: { textContent: _vm._s(_vm.buttonText) },
+    on: { click: _vm.followUser }
+  })
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -49505,8 +49500,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\photographersNetwork\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\photographersNetwork\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/imac/code/photographersNetwork/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/imac/code/photographersNetwork/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
