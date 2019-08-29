@@ -18,27 +18,21 @@ class CommentsController extends Controller
       {
         $user_id = auth()->user()->id;
         $name = auth()->user()->username;
-        $avatar = auth()->user()->profile->avatar;
       }
 
-      else{
-        $user_id = 0;
-        $name = 'anonymous';
-        $avatar = '/images/profile.png';
-      }
       $data = request()->validate([
         'body' => 'required',
       ]);
 
       try {
-        $post->addComment($user_id,$name,$avatar,request('body'));
+        $post->addComment($name,$avatar,request('body'));
+        session()->flash('success', ' Your comment has been added!');
 
       } catch (\Exception $e) {
           session()->flash('error', 'There was an error');
         }
 
-       session()->flash('success', ' Your comment has been added!');
-       
+
       return back();
     }
 }
