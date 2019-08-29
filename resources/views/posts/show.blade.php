@@ -45,12 +45,10 @@
                             </button>
                             <div class="dropdown-menu" aria-labelledby="more">
                                 <a class="dropdown-item" href="/posts/{{ $post->id }}/edit">Edit</a>
-                                <form action="{{ route('post.destroy',['post'=> $post]) }}" method="post">
-                                    @csrf
-                                    @method('DELETE')
 
-                                    <button class="dropdown-item" type="submit">Delete</button>
-                                </form>
+
+                                    <button class="dropdown-item"data-toggle="modal" data-target="#exampleModalCenter">Delete</button>
+
                             </div>
                         </div>
                         @endcan
@@ -125,4 +123,33 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Delete Post</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      Are you sure?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <form id="delete_form" action="{{ route('post.destroy',['post'=> $post]) }}" method="post">
+            @csrf
+            @method('DELETE')
+        <button type="button" class="btn btn-danger"  onclick="form_submit()" >Delete</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  function form_submit() {
+    document.getElementById("delete_form").submit();
+   }
+  </script>
 @endsection
