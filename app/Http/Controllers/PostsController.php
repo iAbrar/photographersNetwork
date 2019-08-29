@@ -78,12 +78,12 @@ try{
       //  $post->caption->update($data); why it doesnt work ?
       //$post->caption-=$data['caption'];
       $post->caption=$data['caption'];
-try {
-  $post->save();
+      try {
+          $post->save();
 
-} catch (\Exception $e) {
-  session()->flash('error', 'There was an error');
-}
+      } catch (\Exception $e) {
+          session()->flash('error', 'There was an error');
+        }
 
        session()->flash('success', ' Your post has been updated!');
       return redirect("/posts/{$post->id}");
@@ -97,7 +97,16 @@ try {
 
       $post = Post::findOrFail($id);
       $username = $post->user->username;
-      $post->delete();
+
+
+      try {
+        $post->delete();
+
+      } catch (\Exception $e) {
+          session()->flash('error', 'There was an error');
+        }
+
+       session()->flash('success', ' Your post has been deleted!');
 
       return redirect()->action(
           'ProfilesController@index', ['username' => $username]
