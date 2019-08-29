@@ -30,8 +30,15 @@ class CommentsController extends Controller
         'body' => 'required',
       ]);
 
-      $post->addComment($user_id,$name,$avatar,request('body'));
+      try {
+        $post->addComment($user_id,$name,$avatar,request('body'));
 
+      } catch (\Exception $e) {
+          session()->flash('error', 'There was an error');
+        }
+
+       session()->flash('success', ' Your comment has been added!');
+       
       return back();
     }
 }
