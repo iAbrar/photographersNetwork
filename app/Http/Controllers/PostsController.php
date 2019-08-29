@@ -45,12 +45,13 @@ try{
         'caption' => $data['caption'],
         'image' => $imagePath,
       ]);
+       session()->flash('success', ' Your image has been uploaded!');
     } catch (\Exception $e) {
 
          session()->flash('error', 'There was an error');
        }
 
-       session()->flash('success', ' Your image has been uploaded!');
+
       return redirect()->action(
           'ProfilesController@index', ['username' => auth()->user()->username]
       );
@@ -80,12 +81,12 @@ try{
       $post->caption=$data['caption'];
       try {
           $post->save();
+          session()->flash('success', ' Your post has been updated!');
 
       } catch (\Exception $e) {
           session()->flash('error', 'There was an error');
         }
 
-       session()->flash('success', ' Your post has been updated!');
       return redirect("/posts/{$post->id}");
 
     }
@@ -102,11 +103,11 @@ try{
       try {
         $post->delete();
 
+        session()->flash('success', ' Your post has been deleted!');
+
       } catch (\Exception $e) {
           session()->flash('error', 'There was an error');
         }
-
-       session()->flash('success', ' Your post has been deleted!');
 
       return redirect()->action(
           'ProfilesController@index', ['username' => $username]

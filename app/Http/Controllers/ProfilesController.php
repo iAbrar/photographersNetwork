@@ -48,11 +48,12 @@ class ProfilesController extends Controller
         ['avatar' =>  $imagePath],
       ['is_available' => $is_avaliable]
       ));
+      session()->flash('success', ' Your profile has been updated!');
+
     } catch (\Exception $e) {
       session()->flash('error', 'There was an error');
     }
 
-    session()->flash('success', ' Your profile has been updated!');
 
     return redirect("/{$user->username}");
 
