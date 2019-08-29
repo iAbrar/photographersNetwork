@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">New Post</div>
                 <div class="card-body">
-                    <form action="/posts" enctype="multipart/form-data" method="post">
+                    <form action="{{ route('posts') }}" enctype="multipart/form-data" method="post">
                         @csrf <!-- need to remove -->
                         <div class="form-group col-md-10 mx-auto">
                             <label for="caption" class=" col-form-label text-md-right">Post Caption</label>

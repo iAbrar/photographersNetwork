@@ -23,11 +23,11 @@ Route::get('/posts/{post}', 'PostsController@show')->name('post.show');
 Route::get('/posts/{post}/edit', 'PostsController@edit')->name('post.edit');
 Route::patch('/posts/{post}', 'PostsController@update')->name('post.update');
 Route::delete('/posts/{post}', 'PostsController@destroy')->name('post.destroy');
-Route::post('/posts', 'PostsController@store');
+Route::post('/posts', 'PostsController@store')->name('posts');
 
-Route::post('/posts/{post}/comment', 'CommentsController@store');
+Route::post('/posts/{post}/comment', 'CommentsController@store')->name('comment.create');
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index')->name('home.index');
 
 Route::get('/{username}', 'ProfilesController@index')->name('profile.show');
 Route::get('/profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');

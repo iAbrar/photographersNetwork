@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">Edit Post</div>
                 <div class="card-body">
-                    <form action="/posts/{{$post->id}}" enctype="multipart/form-data" method="post">
+                    <form action="{{ route('post.update',['post' => $post]) }}" enctype="multipart/form-data" method="post">
                         @method('PATCH')
                         @csrf <!-- need to remove -->
 

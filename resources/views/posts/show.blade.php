@@ -35,7 +35,7 @@
                                 <img src="{{ $post->user->profile->avatar}}" class="rounded-circle" width="50px;" alt="">
                             </div>
                             <h5>
-                                By <strong class="pl-1"><a href="/{{ $post->user->username }}">{{ $post->user->username }}</a></strong>
+                                By <strong class="pl-1"><a href="{{ route('profile.show',['user'=> $post->user->username]) }}">{{ $post->user->username }}</a></strong>
                             </h5>
                         </div>
                         @can ('update', $post)
@@ -45,7 +45,7 @@
                             </button>
                             <div class="dropdown-menu" aria-labelledby="more">
                                 <a class="dropdown-item" href="/posts/{{ $post->id }}/edit">Edit</a>
-                                <form action="/posts/{{$post->id}}" method="post">
+                                <form action="{{ route('post.destroy',['post'=> $post]) }}" method="post">
                                     @csrf
                                     @method('DELETE')
 
@@ -75,7 +75,7 @@
             <h3>Write a comments</h3> <p class="text-muted">{{ $post->comments->count() }} Comments</p>
         </div>
         <div class="col-md-10">
-          <form action="/posts/{{$post->id}}/comment" method="post">
+          <form action="{{  route('comment.create',['post'=> $post]) }}" method="post">
               @csrf
 
               <fieldset class="form-group">
@@ -112,7 +112,7 @@
                           @if ($comment->user_id == 0)
                             <h5 class="card-title">{{ $comment->name }}</h5>
                           @else
-                            <h5 class="card-title">{{ $comment->user->username }}</h5>
+                            <a href="{{ route('profile.show',['user'=> $comment->user->username]) }}"><h5 class="card-title">{{ $comment->user->username }}</h5></a>
                           @endif
                             <p class="card-text text-justify pr-4">{{ $comment->body }}</p>
                             <p class="card-text"><small class="text-muted">Last updated {{ Carbon\Carbon::parse($comment->updated_at)->diffForHumans() }}</small></p>

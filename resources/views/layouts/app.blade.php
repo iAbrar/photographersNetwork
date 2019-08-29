@@ -61,13 +61,13 @@
                         @endif
                         @else
                         <li class="nav-item" class="nav-link">
-                            <a href="{{ url('/home') }} " class="nav-link"><span data-hover="Home">Home</span></a>
+                            <a href="{{ route('home.index')}} " class="nav-link"><span data-hover="Home">Home</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="/posts" class="nav-link"><span data-hover="Timeline">Timeline</span></a>
+                            <a href="{{ route('post.index') }}" class="nav-link"><span data-hover="Timeline">Timeline</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/posts/create"><span data-hover="add post">add post</a>
+                            <a class="nav-link" href="{{ route('post.create') }}"><span data-hover="add post">add post</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -75,7 +75,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="/profile/{{Auth::user()->id}}/edit">
+                                <a class="dropdown-item" href="{{ route('profile.edit', ['user' => Auth::user()->id]) }}">
                                     Edit profile </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

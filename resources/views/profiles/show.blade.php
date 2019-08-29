@@ -45,7 +45,7 @@
         <div id="justify-gallery" class="col-10 mx-auto">
             @foreach ($user->posts as $post)
 
-            <a href="/posts/{{ $post->id }}"><img src="/storage/{{ $post-> image}}" alt=""></a>
+            <a href="{{ route('post.show',['post'=> $post ]) }}"><img src="/storage/{{ $post-> image}}" alt=""></a>
 
             @endforeach
         </div>
