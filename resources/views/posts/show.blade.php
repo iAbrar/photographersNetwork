@@ -104,7 +104,7 @@
                     <div class="col-md-10">
                         <div class="card-body">
                           @if($comment->user_id)
-                          <a href="{{  route('profile.show',['user'=> $comment->user->username]) }}">
+                            <a href="{{  route('profile.show',['user'=> $comment->user->username]) }}">
                             <h5 class="card-title">{{ $comment->user->username }}</h5></a>
                             @else
                             <h5 class="card-title">anonymous</h5>

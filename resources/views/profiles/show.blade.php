@@ -20,10 +20,11 @@
             <span><strong>{{ $user->profile->followers->count() }}</strong> followers</span>
             <span><strong>{{ $user->following->count() }}</strong> following</span>
             <span><strong>#</strong> claps</span>
-            @if ($user->profile->is_available)
-            <span><span class="icon-work"></span> Available to Hire</span>
-            @endif
-
+        </p>
+        <p class="pt-3">
+          @if ($user->profile->is_available)
+          <span><span class="icon-work"></span> Available to Hire</span>
+          @endif
         </p>
         <p class="">
             <a href="{{ $user->profile->url}}"> {{ $user->profile->url}}</a>
