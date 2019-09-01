@@ -19,9 +19,9 @@ class Post extends Model
     return $this->hasMany(Comment::class)->latest();
   }
 
-  public function addComment($user_id,$name,$avatar,$body)
+  public function addComment($user_id,$body)
   {
-    $this->comments()->create(compact('user_id','name','avatar','body'));
+    $this->comments()->create(compact('user_id','body'));
   }
 
 }

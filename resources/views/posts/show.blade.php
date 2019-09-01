@@ -24,7 +24,7 @@
             @endif
             @if(Session::has('error'))
             <div class="alert alert-danger" role="alert">
-                <strong>Eroor</strong>{{ Session::pull('error') }}
+                <strong>Error</strong>{{ Session::pull('error') }}
             </div>
             @endif
             <div class="card">
@@ -99,19 +99,17 @@
             <div class="card mb-3">
                 <div class="row no-gutters">
                     <div class="col-md-2">
-                      @if ($comment->user_id == 0)
-                        <img src="{{ $comment->avatar }}" class="card-img rounded-circle p-3" alt="...">
-                      @else
-                        <img src="{{ $comment->user->profile->avatar }}" class="card-img rounded-circle p-3" alt="...">
-                      @endif
+                        <img src="{{ $comment->user->profile->avatar ??'/images/profile.png' }}" class="card-img rounded-circle p-3" alt="...">
                     </div>
                     <div class="col-md-10">
                         <div class="card-body">
-                          @if ($comment->user_id == 0)
-                            <h5 class="card-title">{{ $comment->name }}</h5>
-                          @else
-                            <a href="{{ route('profile.show',['user'=> $comment->user->username]) }}"><h5 class="card-title">{{ $comment->user->username }}</h5></a>
-                          @endif
+                          @if($comment->user_id)
+                          <a href="{{  route('profile.show',['user'=> $comment->user->username]) }}">
+                            <h5 class="card-title">{{ $comment->user->username }}</h5></a>
+                            @else
+                            <h5 class="card-title">anonymous</h5>
+                            @endif
+
                             <p class="card-text text-justify pr-4">{{ $comment->body }}</p>
                             <p class="card-text"><small class="text-muted">Last updated {{ Carbon\Carbon::parse($comment->updated_at)->diffForHumans() }}</small></p>
                         </div>

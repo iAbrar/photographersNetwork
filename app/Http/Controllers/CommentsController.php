@@ -8,7 +8,7 @@ use App\Comment;
 
 class CommentsController extends Controller
 {
-  protected $fillable = ['post_id','name','avatar','body'];
+  protected $fillable = ['user_id','post_id','body'];
 
 
     public function store(Post $post)
@@ -17,21 +17,24 @@ class CommentsController extends Controller
       if(auth()->user())
       {
         $user_id = auth()->user()->id;
-        $name = auth()->user()->username;
       }
+else {
+  $user_id = null;
+}
 
       $data = request()->validate([
         'body' => 'required',
       ]);
 
-      try {
-        $post->addComment($name,$avatar,request('body'));
-        session()->flash('success', ' Your comment has been added!');
+//dd($user_id,request('body'));
+    //  try {
+        $post->addComment($user_id,request('body'));
 
-      } catch (\Exception $e) {
-          session()->flash('error', 'There was an error');
-        }
+    //  } catch (\Exception $e) {
+      //    session()->flash('error', 'There was an error');
+      //  }
 
+    //   session()->flash('success', ' Your comment has been added!');
 
       return back();
     }
