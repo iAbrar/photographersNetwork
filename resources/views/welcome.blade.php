@@ -38,19 +38,19 @@
                 <ul class="navbar-nav mx-auto">
                     @if (Route::has('login'))
                     <li class="nav-item">
-                        <a href="/posts" class="nav-link"><span data-hover="Timeline">Timeline</span></a>
+                        <a href="/posts" class="nav-link"><span data-hover="{{__('general.Timeline')}}">{{__('general.Timeline')}}</span></a>
                     </li>
                     @auth
                     <li class="nav-item" class="nav-link">
-                        <a href="{{ url('/home') }} " class="nav-link"><span data-hover="Home">Home</span></a>
+                        <a href="{{ route('home.index') }} " class="nav-link"><span data-hover="{{__('general.home')}}">{{__('general.home')}}</span></a>
                     </li>
                     @else
                     <li class="nav-item" class="nav-link">
-                        <a href="{{ route('login') }}" class="nav-link"><span data-hover="Login">Login</span></a>
+                        <a href="{{ route('login') }}" class="nav-link"><span data-hover="{{__('general.Login')}}">{{__('general.Login')}}</span></a>
                     </li>
                     @if (Route::has('register'))
                     <li class="nav-item">
-                        <a href="{{ route('register') }}" class="nav-link"><span data-hover="Register">Register</span></a>
+                        <a href="{{ route('register') }}" class="nav-link"><span data-hover="{{__('general.Register')}}">{{__('general.Register')}}</span></a>
                     </li>
                     @endif
                     @endauth
@@ -71,13 +71,13 @@
                     <div class="about-text">
                         <small class="small-text">Welcome to <span class="mobile-block">Lens• social network!</span></small>
                         <h1 class="animated animated-text">
-                            <span class="mr-2">Are you a photographer?</span>
+                            <span class="mr-2">{{__('general.AreYou')}}</span>
                         </h1>
 
                         <p>and do you want place to show your work? Create your portfolio and share it with others to get hired.</p>
 
                         <div class="custom-btn-group mt-4">
-                            <a href="{{ route('register') }}" class="btn custom-btn custom-btn-bg custom-btn-link">GET STARTED</a>
+                            <a href="{{ route('register') }}" class="btn custom-btn custom-btn-bg custom-btn-link">{{__('general.GETSTARTED')}}</a>
                         </div>
                     </div>
                 </div>

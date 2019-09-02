@@ -52,22 +52,22 @@
                         <!-- Authentication Links -->
                         @guest
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('general.Login') }}</a>
                         </li>
                         @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('general.Register') }}</a>
                         </li>
                         @endif
                         @else
                         <li class="nav-item" class="nav-link">
-                            <a href="{{ route('home.index')}} " class="nav-link"><span data-hover="Home">Home</span></a>
+                            <a href="{{ route('home.index')}} " class="nav-link"><span data-hover="{{__('general.home')}}">{{__('general.home')}}</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('post.index') }}" class="nav-link"><span data-hover="Timeline">Timeline</span></a>
+                            <a href="{{ route('post.index') }}" class="nav-link"><span data-hover="{{__('general.Timeline')}}">{{__('general.Timeline')}}</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('post.create') }}"><span data-hover="add post">add post</a>
+                            <a class="nav-link" href="{{ route('post.create') }}"><span data-hover="{{__('general.addPost')}}">{{__('general.addPost')}}</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
