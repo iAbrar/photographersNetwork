@@ -9,7 +9,7 @@
             </div>
             <div class="row d-flex p-3 align-items-baseline justify-content-between">
               <p class="p-3">
-          <span class="icon-clap"></span><small><strong>#</strong> claps </small>
+          <span class="icon-clap"></span><small><strong>#</strong> {{ trans_choice('general.post.claps', 1) }} </small> <!--change the 1 to # of claps -->
            </p>
                 <p>
                     <small>{{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</small>
@@ -35,7 +35,7 @@
                                 <img src="{{ $post->user->profile->avatar}}" class="rounded-circle" width="50px;" alt="">
                             </div>
                             <h5>
-                                By <strong class="pl-1"><a href="{{ route('profile.show',['user'=> $post->user->username]) }}">{{ $post->user->username }}</a></strong>
+                                {{ __('general.post.by') }} <strong class="pl-1"><a href="{{ route('profile.show',['user'=> $post->user->username]) }}">{{ $post->user->username }}</a></strong>
                             </h5>
                         </div>
                         @can ('update', $post)
@@ -44,10 +44,10 @@
                                 <i class="fas fa-ellipsis-h"></i>
                             </button>
                             <div class="dropdown-menu" aria-labelledby="more">
-                                <a class="dropdown-item" href="/posts/{{ $post->id }}/edit">Edit</a>
+                                <a class="dropdown-item" href="{{ route('post.edit',$post->id) }}">{{ __('general.edit') }}</a>
 
 
-                                    <button class="dropdown-item"data-toggle="modal" data-target="#exampleModalCenter">Delete</button>
+                                    <button class="dropdown-item"data-toggle="modal" data-target="#exampleModalCenter">{{ __('general.delete') }}</button>
 
                             </div>
                         </div>
@@ -70,7 +70,7 @@
     <!--comment section -->
     <div class="row justify-content-center pt-5">
         <div class="d-flex col-md-10 justify-content-between align-items-baseline">
-            <h3>Write a comments</h3> <p class="text-muted">{{ $post->comments->count() }} Comments</p>
+            <h3>{{ __('general.post.writeComment') }}</h3> <p class="text-muted">{{ $post->comments->count() }} {{ trans_choice('general.post.Comments',$post->comments->count()) }}</p>
         </div>
         <div class="col-md-10">
           <form action="{{  route('comment.create',['post'=> $post]) }}" method="post">
@@ -81,7 +81,7 @@
                   <textarea type="text" class="form-control" name="body" placeholder="your comment" required autofocus></textarea>
               </fieldset>
               <fieldset class="form-group">
-                  <button class="btn custom-btn custom-btn-bg custom-btn-link">Add Comment</button>
+                  <button class="btn custom-btn custom-btn-bg custom-btn-link">{{ __('general.post.addComment') }}</button>
               </fieldset>
 
           </form>
@@ -126,20 +126,19 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Delete Post</h5>
+        <h5 class="modal-title" id="exampleModalCenterTitle">  {{ __('general.post.deletePost') }}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-      Are you sure?
-      </div>
+  {{ __('general.confirmationDMsg') }}       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">  {{ __('general.cancel') }} </button>
         <form id="delete_form" action="{{ route('post.destroy',['post'=> $post]) }}" method="post">
             @csrf
             @method('DELETE')
-        <button type="button" class="btn btn-danger"  onclick="form_submit()" >Delete</button>
+        <button type="button" class="btn btn-danger"  onclick="form_submit()" >  {{ __('general.delete') }}</button>
       </form>
       </div>
     </div>

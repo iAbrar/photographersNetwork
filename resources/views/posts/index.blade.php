@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid">
     <div class="row">
-        <h3 class="col-10 mx-auto p-5">Timeline </h3>
+        <h3 class="col-10 mx-auto p-5">{{ __('general.Timeline') }} </h3>
 
         <div id="justify-gallery" class="col-10 mx-auto">
             @foreach ($posts as $post)

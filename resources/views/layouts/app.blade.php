@@ -31,6 +31,9 @@
     <!-- MAIN STYLE -->
     <link rel="stylesheet" href="{{asset('css/tooplate-style.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    @if(app()->getLocale() == 'ar')
+    <link rel="stylesheet" href="{{asset('css/rtl.css')}}">
+    @endif
 </head>
 
 <body>
@@ -61,7 +64,7 @@
                         @endif
                         @else
                         <li class="nav-item" class="nav-link">
-                            <a href="{{ route('home.index')}} " class="nav-link"><span data-hover="{{__('general.home')}}">{{__('general.home')}}</span></a>
+                            <a href="{{ route('home.index')}} " class="nav-link"><span data-hover="{{__('general.Home')}}">{{__('general.Home')}}</span></a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('post.index') }}" class="nav-link"><span data-hover="{{__('general.Timeline')}}">{{__('general.Timeline')}}</span></a>
@@ -76,10 +79,10 @@
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('profile.edit', ['user' => Auth::user()->id]) }}">
-                                    Edit profile </a>
+                                  {{ __('general.editProfile') }} </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    {{ __('general.Logout') }}
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -102,7 +105,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-12">
-                    <p class="copyright-text text-center">Copyright &copy; 2019 Lens• All rights reserved</p>
+                    <p class="copyright-text text-center">{{__('general.footer')}}</p>
                 </div>
 
             </div>

@@ -5,12 +5,12 @@
     <div class="row justify-content-center">
         <div class="col-8 offset-2">
             <div class="card">
-                <div class="card-header">New Post</div>
+                <div class="card-header">{{ __('general.addPost') }}</div>
                 <div class="card-body">
                     <form action="{{ route('posts') }}" enctype="multipart/form-data" method="post">
                         @csrf <!-- need to remove -->
                         <div class="form-group col-md-10 mx-auto">
-                            <label for="caption" class=" col-form-label text-md-right">Post Caption</label>
+                            <label for="caption" class=" col-form-label text-md-right">{{ __('general.PostCaption') }}</label>
 
                             <textarea id="caption" class="form-control @error('caption') is-invalid @enderror" name="caption" required autocomplete="caption" autofocus></textarea>
                             @error('caption')
@@ -38,7 +38,7 @@
                         </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4 custom-btn-group mt-4">
-                                <button class="btn custom-btn custom-btn-bg custom-btn-link">New Post</button>
+                                <button class="btn custom-btn custom-btn-bg custom-btn-link">{{ __('general.newPost') }}</button>
                             </div>
                         </div>
                     </form>
