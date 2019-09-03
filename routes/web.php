@@ -18,10 +18,12 @@ if (Request::segment(1) == 'ar' )
     app()->setLocale('en');
     $locale = null;
 }
+
 Route::prefix($locale)->group(function() {
     Route::get('/', function(){
         return view('welcome');
     });
+    Auth::routes();
     Route::get('/posts/create', 'PostsController@create')->name('post.create');
     Route::get('/posts', 'PostsController@timeLine')->name('post.index');
     Route::get('/posts/{post}', 'PostsController@show')->name('post.show');
@@ -41,6 +43,3 @@ Route::prefix($locale)->group(function() {
     Route::post('/follow/{user}', 'FollowsController@store');
 
 });
-
-
-Auth::routes();
