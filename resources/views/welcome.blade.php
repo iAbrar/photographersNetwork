@@ -53,7 +53,8 @@
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('profile.edit', ['user' => Auth::user()->id]) }}">
-                              {{ __('general.editProfile') }} </a>
+                              {{ __('general.profile.EditProfile') }}
+                             </a>
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                               {{ __('general.Logout') }}
@@ -89,12 +90,12 @@
 
                 <div class="col-lg-7 col-md-12 col-12 d-flex align-items-center">
                     <div class="about-text">
-                        <small class="small-text">Welcome to <span class="mobile-block">Lens• social network!</span></small>
+                        <small class="small-text">{{ __('general.welcome') }}</span></small>
                         <h1 class="animated animated-text">
                             <span class="mr-2">{{__('general.AreYou')}}</span>
                         </h1>
 
-                        <p>and do you want place to show your work? Create your portfolio and share it with others to get hired.</p>
+                        <p>{{__('general.AreYouAnd')}}</p>
 
                         <div class="custom-btn-group mt-4">
                             <a href="{{ route('register') }}" class="btn custom-btn custom-btn-bg custom-btn-link">{{__('general.GETSTARTED')}}</a>
@@ -120,7 +121,7 @@
                 <div class="col-lg-11 text-center mx-auto col-12">
 
                     <div class="col-lg-8 mx-auto">
-                        <h2>Last photos from our photographers</h2>
+                        <h2>{{__('general.lastPhotos')}}</h2>
                     </div>
 
                     <div class="owl-carousel owl-theme">

@@ -10,7 +10,7 @@
                     <form action="{{ route('posts') }}" enctype="multipart/form-data" method="post">
                         @csrf <!-- need to remove -->
                         <div class="form-group col-md-10 mx-auto">
-                            <label for="caption" class=" col-form-label text-md-right">{{ __('general.PostCaption') }}</label>
+                            <label for="caption" class=" col-form-label text-md-right">{{ __('general.post.PostCaption') }}</label>
 
                             <textarea id="caption" class="form-control @error('caption') is-invalid @enderror" name="caption" required autocomplete="caption" autofocus></textarea>
                             @error('caption')
@@ -28,7 +28,7 @@
                                 </div>
                                 <div class="custom-file ">
                                     <input type="file" class="custom-file-input" name="image" id="image" aria-describedby="file">
-                                    <label class="custom-file-label" for="image">Choose image</label>
+                                    <label class="custom-file-label" for="image">{{ __('general.post.ChooseImage') }}</label>
                                 </div>
 
                             </div>
