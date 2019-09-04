@@ -41,7 +41,7 @@
         <!-- MENU -->
         <nav class="navbar navbar-expand-sm navbar-light ">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}"> <span class="icon-len"></span>
+                <a class="navbar-brand" href="{{ route('welcome') }}"> <span class="icon-len"></span>
                     {{ config('app.name', 'Lens•') }}</a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

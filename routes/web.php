@@ -22,7 +22,7 @@ if (Request::segment(1) == 'ar' )
 Route::prefix($locale)->group(function() {
     Route::get('/', function(){
         return view('welcome');
-    });
+    })->name('welcome');
     Auth::routes();
     Route::get('/posts/create', 'PostsController@create')->name('post.create');
     Route::get('/posts', 'PostsController@timeLine')->name('post.index');
