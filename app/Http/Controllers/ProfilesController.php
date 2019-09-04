@@ -54,8 +54,12 @@ class ProfilesController extends Controller
       session()->flash('error', 'There was an error');
     }
 
+    if(app()->getLocale() == 'ar')
+      return redirect("ar/{$user->username}");
 
-    return redirect("/{$user->username}");
+    else {
+      return redirect("/{$user->username}");
+    }
 
     }
 }
