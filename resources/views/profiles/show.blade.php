@@ -33,7 +33,7 @@
     </div>
     @if(Session::has('success'))
     <div class="alert alert-success col-md-8 mx-auto" role="alert">
-        <strong>{{ __('Success')}}</strong>{{ Session::pull('success') }}
+        <strong>{{ __('general.Success')}}</strong>{{ Session::pull('success') }}
     </div>
     @endif
     @if(Session::has('error'))

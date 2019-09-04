@@ -24,7 +24,7 @@
                         <div class="form-group col-md-10 m-auto">
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="file">Upload</span>
+                                    <span class="input-group-text" id="file">{{ __('general.upload') }}</span>
                                 </div>
                                 <div class="custom-file ">
                                     <input type="file" class="custom-file-input" name="image" id="image" aria-describedby="file">

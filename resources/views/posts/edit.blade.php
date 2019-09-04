@@ -12,7 +12,7 @@
                         @csrf <!-- need to remove -->
 
                         <div class="row">
-                            <div class="col-8 offset-2">
+                            <div class="col-8 offset-2  mx-auto">
                                 <div class="form-group row">
                                     <label for="caption" class="col-form-label ">{{ __('general.post.PostCaption') }}</label>
 

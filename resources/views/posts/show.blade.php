@@ -19,12 +19,12 @@
             <hr>
             @if(Session::has('success'))
             <div class="alert alert-success" role="alert">
-                <strong>Success</strong>{{ Session::pull('success') }}
+                <strong> {{__('general.Success')}}</strong>{{ Session::pull('success') }}
             </div>
             @endif
             @if(Session::has('error'))
             <div class="alert alert-danger" role="alert">
-                <strong>Error</strong>{{ Session::pull('error') }}
+                <strong> {{__('general.Error')}}</strong>{{ Session::pull('error') }}
             </div>
             @endif
             <div class="card">
@@ -59,7 +59,7 @@
                             <!-- is this safe way to use lines?-->
                         </p>
                         <p>
-                          <small class="text-muted">Last updated {{ Carbon\Carbon::parse($post->updated_at)->diffForHumans() }}</small>
+                          <small class="text-muted">{{ __('general.LastUpdated') }} {{ Carbon\Carbon::parse($post->updated_at)->diffForHumans() }}</small>
                         </p>
 
                     </div>
@@ -78,7 +78,7 @@
 
               <fieldset class="form-group">
 
-                  <textarea type="text" class="form-control" name="body" placeholder="your comment" required autofocus></textarea>
+                  <textarea type="text" class="form-control" name="body" placeholder="{{ __('general.post.yourComment') }}" required autofocus></textarea>
               </fieldset>
               <fieldset class="form-group">
                   <button class="btn custom-btn custom-btn-bg custom-btn-link">{{ __('general.post.addComment') }}</button>
@@ -111,7 +111,7 @@
                             @endif
 
                             <p class="card-text text-justify pr-4">{{ $comment->body }}</p>
-                            <p class="card-text"><small class="text-muted">Last updated {{ Carbon\Carbon::parse($comment->updated_at)->diffForHumans() }}</small></p>
+                            <p class="card-text"><small class="text-muted">{{ __('general.LastUpdated') }} {{ Carbon\Carbon::parse($comment->updated_at)->diffForHumans() }}</small></p>
                         </div>
                     </div>
                 </div>

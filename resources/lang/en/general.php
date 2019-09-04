@@ -61,11 +61,13 @@ return [
           'AvailabeToHire' => 'Available to hire',
           'Biography' => 'Biography',
           'Website' => 'Website',
+          'ChooseAvatar' => 'Choose Avatar',
     ],
     'edit' => 'Edit',
     'delete' => 'Delete',
     'update' => 'Update',
     'upload' => 'Upload',
+    'browse' => 'Browse',
     'confirmationDMsg' => 'Are you sure?',
     'cancel' => 'Cancel',
     'Success' => 'Success',
@@ -74,7 +76,7 @@ return [
     'getMost' => 'Get the most out of Lens• by uploading your photos and be seen by our global community.',
     'newPost' => 'New Post',
     'YourPhotos' => 'Your photos',
-    // '' => '',
+    'LastUpdated' => 'Last updated',
     // '' => '',
 
 ];

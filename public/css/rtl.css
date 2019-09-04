@@ -1,7 +1,33 @@
-body{
+body
+{
   direction: rtl;
 }
 
-.navbar-brand{
+label
+{
+  display: block;
+}
+
+h5
+{
+  padding-right: 1em;
+}
+
+.navbar-brand
+{
   direction: ltr;
+}
+
+ .card-title, .card-header
+{
+  text-align: right;
+}
+
+.input-group{
+  direction: ltr;
+  text-align: unset;
+}
+.custom-file-label::after
+{
+  content: 'استعراض';  
 }

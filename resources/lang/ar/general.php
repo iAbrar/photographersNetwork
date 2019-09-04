@@ -61,11 +61,13 @@ return [
               'AvailabeToHire' => 'متاح للتوظيف',
               'Biography' => 'نبذة',
               'Website' => 'الموقع الشخصي',
+              'ChooseAvatar' => 'اختر صورة رمزية',
         ],
         'edit' => 'تعديل',
         'delete' => 'حذف',
         'update' => 'تحديث',
         'upload' => 'رفع',
+        'browse' => 'استعراض',
         'confirmationDMsg' => 'هل أنت متأكد؟',
         'cancel' => 'إلغاء',
         'Success' => 'نجاح',
@@ -74,6 +76,8 @@ return [
         'getMost' => 'احصل على أقصى استفادة من Lens • عن طريق تحميل الصور الخاصة بك ومشاهدة مجتمعنا العالمي.',
         'newPost' => 'منشور جديد',
         'YourPhotos' => 'صورك',
+        'LastUpdated' => 'آخر تحديث',
+
 
   //      '' => '',
 

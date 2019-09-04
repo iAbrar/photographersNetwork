@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="custom-file ">
                                     <input type="file" class="custom-file-input" name="avatar" id="avatar" aria-describedby="file">
-                                    <label class="custom-file-label" for="avatar">Choose avatar</label>
+                                    <label class="custom-file-label" for="avatar">{{ __('general.profile.ChooseAvatar')}}</label>
                                 </div>
 
                             </div>
