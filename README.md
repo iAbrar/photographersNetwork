@@ -37,6 +37,7 @@ n/a
 - Create icon font by [IcoMoon](https://icomoon.io/)
 - HTML template designed by [tooplate](https://www.facebook.com/tooplate)
 - [Justified Gallery](http://miromannino.github.io/Justified-Gallery/)
+- [laravel-arabic-files](https://github.com/awssat/laravel-arabic-files)
 
 ## Resources I used them:
 - [Laravel PHP Framework Tutorial - Full Course for Beginners (2019)](https://www.youtube.com/watch?v=ImtZ5yENzgE)
