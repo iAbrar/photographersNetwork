@@ -62,6 +62,8 @@ return [
           'Biography' => 'Biography',
           'Website' => 'Website',
           'ChooseAvatar' => 'Choose Avatar',
+          'SUpdated' => ' Your profile has been updated!',
+
     ],
     'edit' => 'Edit',
     'delete' => 'Delete',
@@ -77,6 +79,8 @@ return [
     'newPost' => 'New Post',
     'YourPhotos' => 'Your photos',
     'LastUpdated' => 'Last updated',
+    'error' => ' There was an error',
+
     // '' => '',
 
 ];

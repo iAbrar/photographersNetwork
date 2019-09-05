@@ -62,6 +62,8 @@ return [
               'Biography' => 'نبذة',
               'Website' => 'الموقع الشخصي',
               'ChooseAvatar' => 'اختر صورة رمزية',
+              'SUpdated' => ' تم تحديث الملف الشخصي!',
+
         ],
         'edit' => 'تعديل',
         'delete' => 'حذف',
@@ -77,6 +79,7 @@ return [
         'newPost' => 'منشور جديد',
         'YourPhotos' => 'صورك',
         'LastUpdated' => 'آخر تحديث',
+        'error' => ' يوجد خطأ',
 
 
   //      '' => '',

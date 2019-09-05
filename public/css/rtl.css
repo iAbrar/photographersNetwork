@@ -18,7 +18,7 @@ h5
   direction: ltr;
 }
 
- .card-title, .card-header
+ .alert, .card-title, .card-header
 {
   text-align: right;
 }
@@ -29,5 +29,5 @@ h5
 }
 .custom-file-label::after
 {
-  content: 'استعراض';  
+  content: 'استعراض';
 }

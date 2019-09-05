@@ -18,6 +18,9 @@ if (Request::segment(1) == 'ar' )
     app()->setLocale('en');
     $locale = null;
 }
+Route::get('/admin', function(){
+    return view('admin');
+});
 
 Route::prefix($locale)->group(function() {
     Route::get('/', function(){
