@@ -48,10 +48,10 @@ class ProfilesController extends Controller
         ['avatar' =>  $imagePath],
       ['is_available' => $is_avaliable]
       ));
-      session()->flash('success', ' Your profile has been updated!');
+      session()->flash('success', trans('general.profile.SUpdated'));
 
     } catch (\Exception $e) {
-      session()->flash('error', 'There was an error');
+      session()->flash('error', trans('general.error'));
     }
 
     if(app()->getLocale() == 'ar')

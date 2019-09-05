@@ -40,16 +40,16 @@ class PostsController extends Controller
       $image = Image::make(public_path("storage/{$imagePath}"));//->fit(1200,1200); // what is the difference between ' and " in this case?
       $image->save();
 
-try{
-      auth()->user()->posts()->create([
-        'caption' => $data['caption'],
-        'image' => $imagePath,
-      ]);
-       session()->flash('success', ' Your image has been uploaded!');
-    } catch (\Exception $e) {
+      try{
+          auth()->user()->posts()->create([
+              'caption' => $data['caption'],
+              'image' => $imagePath,
+            ]);
+          session()->flash('success', ' Your image has been uploaded!');
+      } catch (\Exception $e) {
 
-         session()->flash('error', 'There was an error');
-       }
+        session()->flash('error', trans('general.error'));
+      }
 
 
       return redirect()->action(
@@ -84,10 +84,15 @@ try{
           session()->flash('success', ' Your post has been updated!');
 
       } catch (\Exception $e) {
-          session()->flash('error', 'There was an error');
+        session()->flash('error', trans('general.error'));
         }
 
-      return redirect("/posts/{$post->id}");
+        if(app()->getLocale() == 'ar')
+        return redirect("ar/posts/{$post->id}");
+
+        else {
+          return redirect("/posts/{$post->id}");
+        }
 
     }
 
@@ -106,7 +111,7 @@ try{
         session()->flash('success', ' Your post has been deleted!');
 
       } catch (\Exception $e) {
-          session()->flash('error', 'There was an error');
+        session()->flash('error', trans('general.error'));
         }
 
       return redirect()->action(
