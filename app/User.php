@@ -46,6 +46,43 @@ class User extends Authenticatable
       });
     }
 
+    public function roles()
+    {
+      return $this->belongsToMany(Role::class, 'role_user', 'user_id', 'role_id');
+    }
+
+    public function hasAnyRole($roles)
+    {
+      if(is_array($roles))
+      {
+        foreach ($roles as $role) {
+          if($this->hasRole($role))
+          {
+            return true;
+          }
+        }
+      }
+
+      else
+      {
+        if($this->hasRole($roles))
+        {
+          return true;
+        }
+      }
+    }
+
+
+    public function hasRole($role)
+    {
+      if($this->roles()->where('name', $role)->first())
+      {
+        return true;
+      }
+
+      return false;
+    }
+
     public function following(){
       return $this->belongsToMany(Profile::class);
     }

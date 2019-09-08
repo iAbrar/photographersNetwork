@@ -18,9 +18,16 @@ if (Request::segment(1) == 'ar' )
     app()->setLocale('en');
     $locale = null;
 }
-Route::get('/admin', function(){
-    return view('admin');
-});
+
+Route::get('/admin', [
+  'uses' => 'AdminController@index',
+  'as' => 'admin',
+  'middleware' => 'roles',
+  'roles' => ['admin'],
+]);
+Route::patch('/admin/{post}', 'AdminController@update')->name('admin.update');
+Route::get('/admin/approve', 'AdminController@approved')->name('admin.approved');
+Route::get('/admin/not_approved', 'AdminController@not_approved')->name('admin.not_approved');
 
 Route::prefix($locale)->group(function() {
     Route::get('/', function(){
