@@ -14,13 +14,11 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $posts = Post::where('is_approved',null)->get();
-        if($posts->count() > 0)
-          return view('admin.index',compact('posts'));
+        $posts = Post::where('is_approved', null)->get();
+    
 
-        else {
-            return view('admin.index');
-        }
+        return view('admin.index',compact('posts'));
+
     }
 
     /**

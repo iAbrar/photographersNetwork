@@ -294,7 +294,7 @@ desired effect
             <!-- Main content -->
             <section class="content container-fluid">
 
-                <!--------------------------
+        <!--------------------------
         | Your Page Content Here |
         -------------------------->
                 <div class="row">
@@ -310,17 +310,17 @@ desired effect
                             </thead>
                             <tbody>
 
-                              isset($posts){
+
                                 @foreach ($posts as $post)
                                 <tr>
-                                    <td>{{$post->id}}</td>
-                                    <td>{{$post->user->id}}</td>
-                                    <td>{{$post->user->name}}</td>
-                                    <td>{{$post->caption}}</td>
+                                    <td>{{ $post->id }}</td>
+                                    <td>{{ $post->user->id }}</td>
+                                    <td>{{  $post->user->name }}</td>
+                                    <td>{{  $post->caption }}</td>
                                 </tr>
 
                                 @endforeach
-}
+
 
                             </tbody>
                         </table>
@@ -456,8 +456,9 @@ desired effect
                     '<strong>post ID: </strong>' + row.find("td:eq(0)").html() + '<br>' +
                     '<strong>user ID: </strong>' + row.find("td:eq(1)").html() + '<br>' +
                     '<strong>username: </strong>' + row.find("td:eq(2)").html() +'<br>' +
-                    '<strong>caption ID: </strong>' + row.find("td:eq(3)").html() + '<br>' +
-                    '<form  action="{{ route("admin.update",["post"=> $post]) }}" method="post">'+
+                    '<strong>caption ID: </strong>' + row.find("td:eq(3)").html() + '<br>'
+                    @if($posts->count() >0)
+                    +'<form  action="{{ route("admin.update",["post"=> $post]) }}" method="post">'+
                           '@csrf' +
                           '@method("PATCH")'+
                     '<button name="approve" type="submit" class="btn btn-success">approve</button> </form>' +
@@ -465,7 +466,7 @@ desired effect
                           '@csrf' +
                           '@method("PATCH")'+
                           '<button name="not_approve" type="submit" class="btn btn-danger">not approve</button></form>'
-
+                    @endif
                 );
 
             });
