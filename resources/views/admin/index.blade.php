@@ -268,7 +268,7 @@ desired effect
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">HEADER</li>
                     <!-- Optionally, you can add icons to the links -->
-                    <li class="active"><a href="{{  route('admin') }}"><i class="fa fa-link"></i> <span>Link</span></a></li>
+                    <li class="active"><a href="{{  route('admin') }}"><i class="fa fa-link"></i> <span>All Posts</span></a></li>
                     <li><a href="{{ route('admin.approved') }}"><i class="fa fa-link"></i> <span>approved</span></a></li>
                     <li><a href="{{ route('admin.not_approved') }}"><i class="fa fa-link"></i> <span>not approved</span></a></li>
                 </ul>
