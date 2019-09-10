@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use DataTables;
 
 class AdminController extends Controller
 {
@@ -12,12 +13,14 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::where('is_approved', null)->get();
-    
+      if ($request->ajax()) {
 
-        return view('admin.index',compact('posts'));
+       $posts = Post::where('is_approved', null)->get();
+        return Datatables::of($posts)->make(true);
+      }
+        return view('admin.index');
 
     }
 
@@ -26,11 +29,14 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function approved()
+    public function approved(Request $request)
     {
+      if ($request->ajax()) {
       $posts = Post::where('is_approved',1)->get();
       //dd($posts);
-      return view('admin.approved',compact('posts'));
+      return Datatables::of($posts)->make(true);
+    }
+      return view('admin.approved');
     }
 
     /**
@@ -52,9 +58,15 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function comments(Request $request, $id)
     {
-        //
+      if ($request->ajax()) {
+      $comments = Post::where('post_id',$id)->get();
+      //dd($posts);
+      return Datatables::of($comments)->make(true);
+    }
+    return view('admin.index');
+
     }
 
     /**
@@ -77,16 +89,16 @@ class AdminController extends Controller
      */
     public function update(Request $request,Post $post)
     {
-      if(request('approve'))
-      {
+      // if(request('approve'))
+      // {
         $post->is_approved = 1;
         $post->save();
-      }
-      else{
-        $post->is_approved = 0;
-        $post->save();
-      }
-        return redirect()->back();
+      // }
+      // else{
+      //   $post->is_approved = 0;
+      //   $post->save();
+      // }
+        // return redirect()->back();
     }
 
     /**

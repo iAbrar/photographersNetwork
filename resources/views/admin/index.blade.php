@@ -18,6 +18,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="  https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 
     <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
@@ -33,6 +34,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+   <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+   <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <style>
         .btn {
             margin: 5px;
@@ -268,7 +275,7 @@ desired effect
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">HEADER</li>
                     <!-- Optionally, you can add icons to the links -->
-                    <li class="active"><a href="{{  route('admin') }}"><i class="fa fa-link"></i> <span>All Posts</span></a></li>
+                    <li class="active"><a href="{{  route('admin.index') }}"><i class="fa fa-link"></i> <span>All Posts</span></a></li>
                     <li><a href="{{ route('admin.approved') }}"><i class="fa fa-link"></i> <span>approved</span></a></li>
                     <li><a href="{{ route('admin.not_approved') }}"><i class="fa fa-link"></i> <span>not approved</span></a></li>
                 </ul>
@@ -304,25 +311,10 @@ desired effect
                                 <tr>
                                     <th>post ID</th>
                                     <th>User ID</th>
-                                    <th>User Name</th>
                                     <th>Caption</th>
                                 </tr>
                             </thead>
-                            <tbody>
 
-
-                                @foreach ($posts as $post)
-                                <tr>
-                                    <td>{{ $post->id }}</td>
-                                    <td>{{ $post->user->id }}</td>
-                                    <td>{{  $post->user->name }}</td>
-                                    <td>{{  $post->caption }}</td>
-                                </tr>
-
-                                @endforeach
-
-
-                            </tbody>
                         </table>
                     </div>
                     <div id="info" class="hiddin col-lg-6">
@@ -431,6 +423,7 @@ desired effect
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- AdminLTE App -->
     <script src="dist/js/adminlte.min.js"></script>
+
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
@@ -440,37 +433,55 @@ desired effect
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. -->
-    <script>
-        $(document).ready(function() {
-            $('#example').DataTable();
-        });
-        var pickedup;
+    <script type="text/javascript">
+        // $(document).ready(function() {
+        //     $('#example').DataTable();
+        // });
+        // var pickedup;
 
-        $(document).ready(function() {
-            $("#example tbody tr").on("click", function(event) {
-                var row = $(event.target).closest("tr");
-                $("#left").removeClass('col-lg-12');
-                $("#left").addClass('col-lg-6');
-                $("#info").show().html(
-                    '<strong> The information of post are: <br> </strong>' +
-                    '<strong>post ID: </strong>' + row.find("td:eq(0)").html() + '<br>' +
-                    '<strong>user ID: </strong>' + row.find("td:eq(1)").html() + '<br>' +
-                    '<strong>username: </strong>' + row.find("td:eq(2)").html() +'<br>' +
-                    '<strong>caption ID: </strong>' + row.find("td:eq(3)").html() + '<br>'
-                    @if($posts->count() >0)
-                    +'<form  action="{{ route("admin.update",["post"=> $post]) }}" method="post">'+
-                          '@csrf' +
-                          '@method("PATCH")'+
-                    '<button name="approve" type="submit" class="btn btn-success">approve</button> </form>' +
-                    '<form  action="{{ route("admin.update",["post"=> $post]) }}" method="post">'+
-                          '@csrf' +
-                          '@method("PATCH")'+
-                          '<button name="not_approve" type="submit" class="btn btn-danger">not approve</button></form>'
-                    @endif
-                );
+  $(document).ready(function() {
+      var table;
+         table=   $("#example").DataTable({
+             "processing" : true,
+             "serverSide" : true,
+                "select": true,
+             "ajax" : "{{ route('admin.index') }}",
+             "columns" : [
+              { "data" : "id" },
+              { "data" : "user_id" },
+              { "data" : "caption" },
+             ]
+           });
 
-            });
+           // Add event listener for opening and closing details
+              $('#example tbody').on('click', 'td', function () {
+                  var tr = $(this).closest('tr');
+                  var row = table.row( tr );
+
+                  var post_id = row.data().id;
+                  $("#left").removeClass('col-lg-12');
+                  $("#left").addClass('col-lg-6');
+                  $("#info").show();
+                  $.ajax({
+                    type: "POST",
+                    "data": {
+                      "id": 3,
+                       "_method": 'PATCH',
+                    },
+                    url: "/admin/"+post_id,
+                    success: function (data) {
+                        table.draw();
+                    },
+                    error: function (data) {
+                        console.log('Error:', data);
+                    }
+                  });
+
+              } );
         });
+
+
+
     </script>
 </body>
 

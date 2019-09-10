@@ -21,12 +21,13 @@ if (Request::segment(1) == 'ar' )
 
 Route::get('/admin', [
   'uses' => 'AdminController@index',
-  'as' => 'admin',
+  'as' => 'admin.index',
   'middleware' => 'roles',
   'roles' => ['admin'],
 ]);
 Route::patch('/admin/{post}', 'AdminController@update')->name('admin.update');
 Route::get('/admin/approve', 'AdminController@approved')->name('admin.approved');
+Route::get('/admin/comments', 'AdminController@comments')->name('admin.comments');
 Route::get('/admin/not_approved', 'AdminController@not_approved')->name('admin.not_approved');
 
 Route::prefix($locale)->group(function() {

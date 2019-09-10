@@ -30,7 +30,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+ <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+ <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+ <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <style>
@@ -268,7 +274,7 @@ desired effect
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">HEADER</li>
                     <!-- Optionally, you can add icons to the links -->
-                    <li><a href="{{  route('admin') }}"><i class="fa fa-link"></i> <span>All Posts</span></a></li>
+                    <li><a href="{{  route('admin.index') }}"><i class="fa fa-link"></i> <span>All Posts</span></a></li>
                     <li  class="active"><a href="{{ route('admin.approved') }}"><i class="fa fa-link"></i> <span>approved</span></a></li>
                     <li><a href="{{ route('admin.not_approved') }}"><i class="fa fa-link"></i> <span>not approved</span></a></li>
                 </ul>
@@ -304,22 +310,10 @@ desired effect
                                 <tr>
                                     <th>post ID</th>
                                     <th>User ID</th>
-                                    <th>User Name</th>
                                     <th>Caption</th>
                                 </tr>
                             </thead>
                             <tbody>
-                              @foreach ($posts as $post)
-
-                              <tr>
-                                  <td>{{$post->id}}</td>
-                                  <td>{{$post->user->id}}</td>
-                                  <td>{{$post->user->name}}</td>
-                                  <td>{{$post->caption}}</td>
-                              </tr>
-
-
-                              @endforeach
 
                             </tbody>
                         </table>
@@ -439,7 +433,23 @@ desired effect
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. -->
+<script type="text/javascript">
+$(document).ready(function() {
+    var table;
+       table=   $("#example").DataTable({
+           "processing" : true,
+           "serverSide" : true,
+           "ajax" : "{{ route('admin.approved') }}",
+           "columns" : [
+            { "data" : "id" },
+            { "data" : "user_id" },
+            { "data" : "caption" },
+           ]
+         });
 
+      });
+
+</script>
 </body>
 
 </html>

@@ -12,7 +12,7 @@ return [
     |
     */
 
-
+        'Lang' => 'English',
         'GETSTARTED' => 'البدء',
         'Home' => 'الرئيسية',
         'Login' => 'تسجيل الدخول',
