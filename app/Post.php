@@ -14,6 +14,11 @@ class Post extends Model
     return $this->belongsTo(User::class);
   }
 
+  public function stage()
+  {
+    return $this->belongsTo(Stage::class);
+  }
+
   public function comments()
   {
     return $this->hasMany(Comment::class)->latest();

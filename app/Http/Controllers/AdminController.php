@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Comment;
+
 use DataTables;
 
 class AdminController extends Controller
@@ -58,14 +60,22 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function comments(Request $request, $id)
+    public function comments(Request $request)
     {
-      if ($request->ajax()) {
-      $comments = Post::where('post_id',$id)->get();
-      //dd($posts);
-      return Datatables::of($comments)->make(true);
-    }
-    return view('admin.index');
+
+      $id =$request->id ;
+
+      // $post =  Post::where('id',$id)->get();
+
+      $post = Post::findOrFail($id);
+
+      // dd($post->comments);
+      $comments = $post->comments;
+      return view('admin.html', compact('comments') )  ;
+
+      //return response()->json($post->comments->toArray()) ;
+
+    //return view('admin.index');
 
     }
 

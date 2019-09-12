@@ -12,7 +12,7 @@
 
     <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+  
 
     <!-- Fontawesome -->
     <script src="https://kit.fontawesome.com/c8f77d7d5d.js"></script>
@@ -123,6 +123,7 @@
         });
     </script>
     <script src="{{ asset('js/fileUpload.js') }}" defer></script>
+    @yield('script')
 </body>
 
 </html>
