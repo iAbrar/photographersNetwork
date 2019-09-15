@@ -19,7 +19,8 @@ class AdminController extends Controller
     {
       if ($request->ajax()) {
 
-       $posts = Post::where('is_approved', null)->get();
+       $posts = Post::with('stage')->get();
+
         return Datatables::of($posts)->make(true);
       }
         return view('admin.index');
@@ -69,9 +70,9 @@ class AdminController extends Controller
 
       $post = Post::findOrFail($id);
 
-      // dd($post->comments);
-      $comments = $post->comments;
-      return view('admin.html', compact('comments') )  ;
+      dd($post->stage);
+      //$comments = $post->comments;
+      return view('admin.html', compact('post') )  ;
 
       //return response()->json($post->comments->toArray()) ;
 

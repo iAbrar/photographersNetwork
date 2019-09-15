@@ -70,14 +70,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 "select": true,
                 "ajax": "{{ route('admin.index') }}",
                 "columns": [{
-                    "data": "id"
+                    data: "id"
                 }, {
-                    "data": "caption"
+                    data: "caption"
                 }, {
-                    "data": "caption"
+                    data: "stage.name"
                 },
                 {
-                  "data": "Action",
+                  data: "Action",
                  "orderable": false ,
                   mRender: function (o) { return '<i class="fas fa-pen-square"></i>'; }
               } ]

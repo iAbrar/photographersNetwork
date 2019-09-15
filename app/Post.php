@@ -9,6 +9,15 @@ class Post extends Model
 
   protected $guarded = []; // just until i finish building the app
 
+  protected static function boot()
+  {
+    parent::boot();
+
+    static::created(function ($post){
+      $post->stage()->create();
+    });
+  }
+
   public function user()
   {
     return $this->belongsTo(User::class);
@@ -16,7 +25,7 @@ class Post extends Model
 
   public function stage()
   {
-    return $this->belongsTo(Stage::class);
+    return $this->hasOne(Stage::class);
   }
 
   public function comments()
