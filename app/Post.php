@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\ModelStatus\HasStatuses;
 
 class Post extends Model
 {
+  use HasStatuses;
 
   protected $guarded = []; // just until i finish building the app
 
