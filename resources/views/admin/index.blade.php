@@ -74,13 +74,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 }, {
                     data: "caption"
                 }, {
-                    data: "stage.name"
+                    data: "stage.name", //remove stage
+                    createdCell: function (td, cellData, rowData, row, col) {
+                         //Your js here.
+                         $(td).addClass('badge badge-pill badge-info');
+                 }
                 },
                 {
                   data: "Action",
                  "orderable": false ,
                   mRender: function (o) { return '<i class="fas fa-pen-square"></i>'; }
-              } ]
+              } ],
             });
 
             $('#example tbody').on('click', 'i', function() {
