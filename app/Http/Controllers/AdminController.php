@@ -17,43 +17,23 @@ class AdminController extends Controller
      */
     public function index(Request $request)
     {
-      if ($request->ajax()) {
 
-      // $posts = Post::with('stage')->get(); remove stage
+        if ($request->ajax()) {
+            $posts = Post::with('statuses')->get();
+            /* this way will fix the issue of not finding the column of ststus in post table
+            for more info please visit https://yajrabox.com/docs/laravel-datatables/master/add-column
+            */
 
-        return Datatables::of($posts)->make(true);
-      }
+            return Datatables::of($posts)->addColumn('status', function($post)
+            {
+                return $post->latestStatus();
+            })->make(true);
+        }
         return view('admin.index');
 
     }
 
-    /**
-     * Show the approved posts.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function approved(Request $request)
-    {
-      if ($request->ajax()) {
-      $posts = Post::where('is_approved',1)->get();
-      //dd($posts);
-      return Datatables::of($posts)->make(true);
-    }
-      return view('admin.approved');
-    }
 
-    /**
-     * Show the unapproved posts.
-     *
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function not_approved()
-    {
-      $posts = Post::where('is_approved',0)->get();
-
-      return view('admin.not_approved',compact('posts'));
-    }
 
     /**
      * Display the specified resource.
@@ -64,19 +44,16 @@ class AdminController extends Controller
     public function comments(Request $request)
     {
 
-      $id =$request->id ;
+        $id = $request->id;
 
-      // $post =  Post::where('id',$id)->get();
+        // $post =  Post::where('id',$id)->get();
 
-      $post = Post::findOrFail($id);
+        $post = Post::findOrFail($id);
+        //dd($post->statuses);
+        //$comments = $post->comments;
+        return view('admin.html', compact('post'));
 
-      //dd($post->stage);
-      //$comments = $post->comments;
-      return view('admin.html', compact('post') )  ;
-
-      //return response()->json($post->comments->toArray()) ;
-
-
+        //return response()->json($post->comments->toArray()) ;
 
     }
 
@@ -86,9 +63,21 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+
+      if($request->ajax())
+      {
+        $id = $request->id;
+
+        // $post =  Post::where('id',$id)->get();
+
+        $post = Post::findOrFail($id);
+      }
+      //dd($post->statuses);
+      //$comments = $post->comments;
+      return view('admin.html', compact('post'));
+
     }
 
     /**
@@ -98,19 +87,22 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Post $post)
-    {
-      // if(request('approve'))
-      // {
-        $post->is_approved = 1;
-        $post->save();
-      // }
-      // else{
-      //   $post->is_approved = 0;
-      //   $post->save();
-      // }
-        // return redirect()->back();
-    }
+     public function update(Request $request)
+     {
+
+       if($request->ajax() )
+       {
+         $id = $request->id;
+         $post = Post::findOrFail($id);
+
+         $status = $request->get('status');
+
+         $post->setStatus($status);
+        // $post->save();
+        // dd($post);
+       }
+         return view('admin.index');
+     }
 
     /**
      * Remove the specified resource from storage.

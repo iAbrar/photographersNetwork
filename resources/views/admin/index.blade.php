@@ -25,6 +25,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         color: #fd9a00;
         cursor: pointer;
       }
+
     </style>
 </head>
 
@@ -53,6 +54,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <script type="text/javascript">
         $(document).ready(function() {
+
             var table;
             // Edit record
               $('#example').on('click', 'a.editor_edit', function (e) {
@@ -74,16 +76,30 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 }, {
                     data: "caption"
                 }, {
-                    data: "stage.name", //remove stage
-                    createdCell: function (td, cellData, rowData, row, col) {
+                    data: "status",
+                    mRender: function (cellData) {
                          //Your js here.
-                         $(td).addClass('badge badge-pill badge-info');
-                 }
+                         if(cellData == 'pending')
+                         {
+                           return '<span class="badge badge-pill badge-primary">'+cellData +'</span>';
+                         }
+
+                         else if (cellData == 'approve') {
+                           return '<span class="badge badge-pill badge-success">'+cellData +'</span>';
+
+                         }
+
+                         else  {
+                           return '<span class="badge badge-pill badge-danger">'+cellData +'</span>';
+
+                         }
+
+                                         }
                 },
                 {
                   data: "Action",
                  "orderable": false ,
-                  mRender: function (o) { return '<i class="fas fa-pen-square"></i>'; }
+                  mRender: function (cellData) { return '<i class="fas fa-pen-square"></i>'; }
               } ],
             });
 
@@ -101,10 +117,39 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         id: post_id
                     },
 
-                    url: "{{ route('admin.comments')}}",
+                    url: "{{ route('admin.edit')}}",
                     success: function(data) {
                         $('#info').html(data);
+                        $('#cancel').click(function()
+                            {
+                              $('#info').hide();
+                              $("#left").addClass('col-lg-12');
 
+                            });
+                            $('#change').click(function(data) {
+
+                              var status= $("#list").val();
+                              var post_id = $('#secret').val();
+
+                                $.ajax({
+                                  method:"POST",
+                                  data: {
+                                        status: status,
+                                        id: post_id,
+                                    },
+                                  url: "{{ route('update.status')}}",
+
+                                    success: function(data) {
+
+                                      $('#example').DataTable().ajax.reload();
+
+                                    },
+                                    error: function(data) {
+                                        console.log('Error:', data);
+                                    }
+                                });
+
+                        });
                     },
                     error: function(data) {
                         console.log('Error:', data);
@@ -112,7 +157,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 });
 
             });
-        });
+
+
+
+      });
+
     </script>
 </body>
 

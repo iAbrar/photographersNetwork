@@ -11,6 +11,15 @@ class Post extends Model
 
   protected $guarded = []; // just until i finish building the app
 
+  protected static function boot()
+  {
+    parent::boot();
+
+    static::created(function ($post){
+      $post->setStatus('pending');
+    });
+  }
+
   public function user()
   {
     return $this->belongsTo(User::class);

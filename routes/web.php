@@ -25,9 +25,8 @@ Route::get('/admin', [
   'middleware' => 'roles',
   'roles' => ['admin'],
 ]);
-Route::get('/admin/getComments', 'AdminController@comments')->name('admin.comments');
-Route::get('/admin/approve', 'AdminController@approved')->name('admin.approved');
-//Route::get('/admin/comments', 'AdminController@comments')->name('admin.comments');
+Route::post('/admin/update', 'AdminController@update')->name('update.status');
+Route::get('/admin/edit', 'AdminController@edit')->name('admin.edit');
 Route::get('/admin/not_approved', 'AdminController@not_approved')->name('admin.not_approved');
 
 Route::prefix($locale)->group(function() {
